@@ -1,0 +1,84 @@
+# SuperEnchantments Configuration
+
+# Whether to display cooldown messages
+cooldown-display-enabled: true
+
+# ArrowStorm Settings
+arrowstorm:
+  cooldown-base: 6
+  cooldown-reduction: 1
+  arrow-count-base: 1
+  arrow-count-increase: 1
+  speed-base: 1.5
+  speed-increase: 0.3
+  damage-base: 2.0
+  damage-increase: 0.8
+  spread-base: 0.1
+  spread-reduction: 0.05
+
+# BlazingShot Settings
+blazingshot:
+  cooldown-base: 8
+  cooldown-reduction: 2
+  fireball-count-base: 1
+  fireball-count-increase: 1
+  yield-base: 0.5
+  yield-increase: 0.4
+  velocity-base: 1.2
+  velocity-increase: 0.15
+  spread-base: 0.2
+  spread-reduction: 0.05
+
+# VoidStep Settings
+voidstep:
+  cooldown-base: 10
+  cooldown-reduction: 2
+  distance-base: 5
+  distance-increase: 5
+
+# PackLeader Settings
+packleader:
+  cooldown-base: 15
+  cooldown-reduction: 3
+  wolf-count-base: 1
+  wolf-count-increase: 1
+
+# ExplosiveTip Settings
+explosivetip:
+  power-base: 0.5
+  power-increase: 0.8
+
+# Frostbite Settings
+frostbite:
+  chance-base: 0.10
+  chance-increase: 0.08
+  duration-base: 1.5
+  duration-increase: 0.5
+  intensity-base: 1
+  intensity-increase: 1
+
+# Thunderbolt Settings
+thunderbolt:
+  chance-base: 0.05
+  chance-increase: 0.03
+  strike-count-base: 1
+  strike-count-increase: 0.5
+  spread-radius: 3.0
+
+# Venom Strike Settings
+venom_strike:
+  chance-base: 0.10
+  chance-increase: 0.05
+  duration-base: 3.0
+  duration-increase: 1.0
+  intensity-base: 0
+  intensity-increase: 1
+
+# Soul Drain Settings
+soul_drain:
+  chance-base: 0.15
+  chance-increase: 0.10
+  healing-multiplier-base: 0.20
+  healing-multiplier-increase: 0.10
+  particle-count-base: 3
+  particle-count-increase: 2
