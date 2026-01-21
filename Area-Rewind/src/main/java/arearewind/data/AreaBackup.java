@@ -14,25 +14,47 @@ public class AreaBackup implements ConfigurationSerializable, Serializable {
     private String id;
     private LocalDateTime timestamp;
     private Map<String, BlockInfo> blocks;
+    private Map<String, Object> entities;
 
     public AreaBackup(LocalDateTime timestamp, Map<String, BlockInfo> blocks) {
         this.id = String.valueOf(nextId++);
         this.timestamp = timestamp;
         this.blocks = blocks;
+        this.entities = new HashMap<>();
+    }
+
+    public AreaBackup(LocalDateTime timestamp, Map<String, BlockInfo> blocks, Map<String, Object> entities) {
+        this.id = String.valueOf(nextId++);
+        this.timestamp = timestamp;
+        this.blocks = blocks;
+        this.entities = entities != null ? entities : new HashMap<>();
     }
 
     public AreaBackup(String id, LocalDateTime timestamp, Map<String, BlockInfo> blocks) {
         this.id = id;
         this.timestamp = timestamp;
         this.blocks = blocks;
+        this.entities = new HashMap<>();
+    }
+
+    public AreaBackup(String id, LocalDateTime timestamp, Map<String, BlockInfo> blocks, Map<String, Object> entities) {
+        this.id = id;
+        this.timestamp = timestamp;
+        this.blocks = blocks;
+        this.entities = entities != null ? entities : new HashMap<>();
     }
 
     public String getId() { return id; }
     public LocalDateTime getTimestamp() { return timestamp; }
     public Map<String, BlockInfo> getBlocks() { return blocks; }
+    public Map<String, Object> getEntities() { return entities; }
 
     public int getBlockCount() {
         return blocks.size();
+    }
+
+    public int getEntityCount() {
+        return entities.size();
     }
 
     public boolean containsPosition(String position) {
@@ -49,6 +71,7 @@ public class AreaBackup implements ConfigurationSerializable, Serializable {
         map.put("id", id);
         map.put("timestamp", timestamp != null ? timestamp.toString() : null);
         map.put("blocks", blocks);
+        map.put("entities", entities);
         return map;
     }
 
@@ -57,6 +80,12 @@ public class AreaBackup implements ConfigurationSerializable, Serializable {
         String id = (String) map.get("id");
         LocalDateTime timestamp = map.get("timestamp") != null ? LocalDateTime.parse((String) map.get("timestamp")) : null;
         Map<String, BlockInfo> blocks = (Map<String, BlockInfo>) map.get("blocks");
-        return new AreaBackup(id, timestamp, blocks);
+        Map<String, Object> entities = (Map<String, Object>) map.getOrDefault("entities", new HashMap<>());
+        return new AreaBackup(id, timestamp, blocks, entities);
+    }
+
+    static {
+        org.bukkit.configuration.serialization.ConfigurationSerialization.registerClass(AreaBackup.class);
+        org.bukkit.configuration.serialization.ConfigurationSerialization.registerClass(AreaBackup.class, "AreaBackup");
     }
 }

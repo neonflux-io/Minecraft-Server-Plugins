@@ -57,23 +57,23 @@ All plugins are designed to work seamlessly together and with popular server plu
     - [First Launch & Configuration](#first-launch--configuration)
     - [Verifying Installation](#verifying-installation)
 2. [Advanced Achievements](#advanced-achievements)
-    - [Core Features (Advanced Achievements)](#core-features-advanced-achievements)
+    - [Core Features](#core-features)
     - [Administrative & Player Commands](#administrative--player-commands)
 3. [Area Rewind](#area-rewind)
-    - [Core Features (Area Rewind)](#core-features-area-rewind)
-    - [Getting Started (Area Rewind)](#getting-started-area-rewind)
-    - [Player Commands (Area Rewind)](#player-commands-area-rewind)
-    - [Administrative Commands (Area Rewind)](#administrative-commands-area-rewind)
+    - [Core Features](#core-features-1)
+    - [Getting Started](#getting-started-1)
+    - [Player Commands](#player-commands)
+    - [Administrative Commands](#administrative-commands)
 4. [Piston Crusher](#piston-crusher)
-    - [Core Features (Piston Crusher)](#core-features-piston-crusher)
-    - [Example Setup (Piston Crusher)](#example-setup-piston-crusher)
-    - [Administrative Commands (Piston Crusher)](#administrative-commands-piston-crusher)
+    - [Core Features](#core-features-2)
+    - [Example Setup](#example-setup)
+    - [Administrative Commands](#administrative-commands-1)
 5. [Rail Boost](#rail-boost)
-    - [Core Features (Rail Boost)](#core-features-rail-boost)
-    - [Player Commands (Rail Boost)](#player-commands-rail-boost)
+    - [Core Features](#core-features-3)
+    - [Player Commands](#player-commands-1)
 6. [Super Enchantments](#super-enchantments)
-    - [Core Features (Super Enchantments)](#core-features-super-enchantments)
-    - [Player Commands (Super Enchantments)](#player-commands-super-enchantments)
+    - [Core Features](#core-features-4)
+    - [Player Commands](#player-commands-2)
 7. [License](#license)
 8. [Screenshots](#screenshots)
 
@@ -106,7 +106,7 @@ For plugin-specific commands and advanced configuration, see the sections below.
 
 An advanced achievement system that tracks player progress for various task types (block breaking, crafting, mob kills, etc.) and provides highly configurable rewards. All progress and claim status are stored persistently per player. The plugin architecture allows for custom extensions via API.
 
-### Core Features (Advanced Achievements):
+### Core Features:
 - **Progress Tracking:** Real-time tracking for all task types (block breaking, crafting, mob kills, etc.)
 - **Reward System:** Economy (Vault), items, XP, titles, commands – all configurable per achievement
 - **Database:** Supports MySQL and SQLite, including asynchronous load/save
@@ -138,7 +138,7 @@ An advanced achievement system that tracks player progress for various task type
 
 A comprehensive area protection and backup system that allows players to create protected zones with automatic backups, undo/redo functionality, and advanced visualization features. Perfect for servers that need reliable area management with rollback capabilities.
 
-### Core Features (Area Rewind):
+### Core Features:
 - **Area Protection:** Create protected areas with position selection using wooden hoe tool
 - **Automatic Backups:** Scheduled backups with configurable intervals and retention policies
 - **Manual Backups:** Create backups on demand for important moments
@@ -148,18 +148,18 @@ A comprehensive area protection and backup system that allows players to create 
 - **GUI Interface:** User-friendly inventory-based GUI for area and backup management
 - **Visualization:** Particle-based area boundary visualization with customizable effects
 - **Interval Restoration:** Automatic restoration on configurable intervals for specific uses
-- **Block State Support:** Full support for containers, signs, banners, and all complex block states
+- **Block State Support:** Full support for containers with contents (chests, barrels, etc.), signs with text, banners with patterns, and all complex block states
 - **Rollback System:** Time-based rollback functionality (e.g., restore to 2 hours ago)
 - **Preview System:** Preview backup states before restoration with particle effects
 - **Database Storage:** Persistent storage with file-based backup system
 
-### Getting Started (Area Rewind):
+### Getting Started:
 1. **Selection:** Use a wooden hoe to select two corners of your area (left-click pos1, right-click pos2)
 2. **Creation:** Use `/rewind save <name>` to create a protected area
 3. **Backup:** Use `/rewind backup <area>` to create manual backups
 4. **Management:** Use `/rewind gui` for easy graphical management
 
-### Player Commands (Area Rewind):
+### Player Commands:
 
 | Command | Description |
 |---------|-------------|
@@ -179,7 +179,7 @@ A comprehensive area protection and backup system that allows players to create 
 | `/rewind show <area>` | Visualize area boundaries |
 | `/rewind gui` | Open graphical interface |
 
-### Administrative Commands (Area Rewind):
+### Administrative Commands:
 
 | Command | Description |
 |---------|-------------|
@@ -203,13 +203,13 @@ A comprehensive area protection and backup system that allows players to create 
 
 An automation plugin that allows pistons to crush only whitelisted blocks into multiple items, with a configurable multiplier. All settings can be changed live via command, no server restart required.
 
-### Core Features (Piston Crusher):
+### Core Features:
 - **Block Whitelist:** Only allowed blocks are crushed (configurable)
 - **Output Multiplier:** Sets how many items are dropped per block
 - **Crusher Block:** Must be movable by pistons (e.g., no obsidian, bedrock, etc.)
 - **Tab Completion:** Available for all material names
 
-### Example Setup (Piston Crusher)
+### Example Setup
 
 To build a working piston crusher, arrange the blocks in a straight line as follows:
 
@@ -224,7 +224,7 @@ To build a working piston crusher, arrange the blocks in a straight line as foll
 
 Make sure there is nothing blocking the piston from pushing the block into the crusher block. Only blocks on the whitelist will be crushed and multiplied.
 
-### Administrative Commands (Piston Crusher):
+### Administrative Commands:
 | Command | Description |
 |--------|--------------|
 | `/pistoncrusher whitelist add <Material>` | Adds a block to the whitelist |
@@ -241,7 +241,7 @@ Make sure there is nothing blocking the piston from pushing the block into the c
 
 A minecart enhancement plugin that adds speed control, auto-pickup, inventory, magnetism, particles, chunkloading, and more – all individually configurable per minecart.
 
-### Core Features (Rail Boost):
+### Core Features:
 - **Speed Levels:** 6 levels (0.25x to 4.0x), switchable live
 - **Auto-Pickup:** Items in a radius are automatically collected (radius configurable)
 - **Inventory:** Each minecart has its own storage
@@ -252,7 +252,7 @@ A minecart enhancement plugin that adds speed control, auto-pickup, inventory, m
 - **Auto-Sit:** Automatic boarding
 - **Blacklist:** Certain items are not picked up
 
-### Player Commands (Rail Boost):
+### Player Commands:
 | Command | Description |
 |--------|--------------|
 | `/railboost speed <1-6>` | Sets the speed |
@@ -278,7 +278,7 @@ A minecart enhancement plugin that adds speed control, auto-pickup, inventory, m
 
 A powerful enchantment system that allows players to apply all vanilla enchantments with levels 1–255, with full compatibility checks and context-aware tab completion. Clear error and success messages for all operations.
 
-### Core Features (Super Enchantments):
+### Core Features:
 - **Level 1–255:** All vanilla enchantments, level freely selectable
 - **Compatibility Check:** Only valid enchantments for the held item are allowed
 - **Tab Completion:** Only shows valid enchantments for the held item
@@ -286,7 +286,7 @@ A powerful enchantment system that allows players to apply all vanilla enchantme
 - **Permissions:** Configurable access for all commands
 - **Feedback:** Clear error and confirmation messages
 
-### Player Commands (Super Enchantments):
+### Player Commands:
 | Command | Description |
 |--------|--------------|
 | `/superenchant <enchantment> [level]` | Enchants the item in your hand |
@@ -332,8 +332,8 @@ The following screenshots demonstrate the core functionality of each plugin, inc
     <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-crusher.png" target="_blank" rel="noopener noreferrer">
       <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-crusher.png" alt="Piston Crusher" width="300">
     </a></td>
-    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-magnet.png" target="_blank" rel="noopener noreferrer">
-      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-magnet.png" alt="Magnet Feature" width="300">
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-effect.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-effect.png" alt="Magnet Feature" width="300">
     </a></td>
     <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-enchantment.png" target="_blank" rel="noopener noreferrer">
       <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-enchantment.png" alt="Super Enchantment" width="300">

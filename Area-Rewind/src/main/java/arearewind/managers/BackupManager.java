@@ -36,38 +36,84 @@ public class BackupManager {
         this.undoPointers = new ConcurrentHashMap<>();
     }
 
+    private final Set<Material> POI_BLOCKS = Set.of(
+            Material.LECTERN, Material.CARTOGRAPHY_TABLE, Material.FLETCHING_TABLE,
+            Material.SMITHING_TABLE, Material.LOOM, Material.STONECUTTER,
+            Material.GRINDSTONE, Material.BARREL, Material.SMOKER, Material.BLAST_FURNACE,
+            Material.FURNACE, Material.BREWING_STAND, Material.COMPOSTER, Material.BELL
+    );
+
+    private final Set<Material> BED_BLOCKS = Set.of(
+            Material.WHITE_BED, Material.ORANGE_BED, Material.MAGENTA_BED, Material.LIGHT_BLUE_BED,
+            Material.YELLOW_BED, Material.LIME_BED, Material.PINK_BED, Material.GRAY_BED,
+            Material.LIGHT_GRAY_BED, Material.CYAN_BED, Material.PURPLE_BED, Material.BLUE_BED,
+            Material.BROWN_BED, Material.GREEN_BED, Material.RED_BED, Material.BLACK_BED
+    );
+
     private BlockInfo createBlockInfo(Block block) {
-        BlockInfo blockInfo = new BlockInfo(block.getType(), block.getBlockData());
+        try {
+            if (!Bukkit.isPrimaryThread()) {
+                plugin.getLogger().warning("createBlockInfo called from async thread for block at " + block.getLocation());
+                return new BlockInfo(block.getType(), block.getBlockData());
+            }
 
-        if (block.getState() instanceof Banner) {
-            Banner banner = (Banner) block.getState();
-            blockInfo.setBannerPatterns(new ArrayList<>(banner.getPatterns()));
-        }
-        else if (block.getState() instanceof Sign) {
-            Sign sign = (Sign) block.getState();
-            blockInfo.setSignLines(sign.getLines());
-        }
-        else if (block.getState() instanceof org.bukkit.block.Container) {
-            org.bukkit.block.Container container = (org.bukkit.block.Container) block.getState();
-            ItemStack[] contents = container.getInventory().getContents();
-            blockInfo.setContainerContents(contents);
+            BlockInfo blockInfo = new BlockInfo(block.getType(), block.getBlockData());
 
-            plugin.getLogger().info("Backup: Container (" + block.getType() + ") at " +
-                    block.getLocation() + " has " + (contents != null ? contents.length : 0) +
-                    " slots with items: " + getContainerSummary(contents));
-        }
-        else if (block.getState() instanceof org.bukkit.block.Jukebox) {
-            org.bukkit.block.Jukebox jukebox = (org.bukkit.block.Jukebox) block.getState();
-            blockInfo.setJukeboxRecord(jukebox.getRecord());
-        }
-        else if (block.getState() instanceof org.bukkit.block.Skull) {
-            org.bukkit.block.Skull skull = (org.bukkit.block.Skull) block.getState();
-            if (skull.getOwningPlayer() != null) {
-                blockInfo.setSkullOwner(skull.getOwningPlayer().getName());
+            try {
+                if (block.getState() instanceof Banner) {
+                    Banner banner = (Banner) block.getState();
+                    if (banner.getPatterns() != null) {
+                        blockInfo.setBannerPatterns(new ArrayList<>(banner.getPatterns()));
+                    }
+                }
+                else if (block.getState() instanceof Sign) {
+                    Sign sign = (Sign) block.getState();
+                    if (sign.getLines() != null) {
+                        blockInfo.setSignLines(sign.getLines());
+                    }
+                }
+                else if (block.getState() instanceof org.bukkit.block.Container) {
+                    org.bukkit.block.Container container = (org.bukkit.block.Container) block.getState();
+                    if (container.getInventory() != null) {
+                        ItemStack[] contents = container.getInventory().getContents();
+                        blockInfo.setContainerContents(contents);
+
+                        plugin.getLogger().fine("Backup: Container (" + block.getType() + ") at " +
+                                block.getLocation() + " has " + (contents != null ? contents.length : 0) +
+                                " slots with items: " + getContainerSummary(contents));
+                    }
+                }
+                else if (block.getState() instanceof org.bukkit.block.Jukebox) {
+                    org.bukkit.block.Jukebox jukebox = (org.bukkit.block.Jukebox) block.getState();
+                    if (jukebox.getRecord() != null) {
+                        blockInfo.setJukeboxRecord(jukebox.getRecord());
+                    }
+                }
+                else if (block.getState() instanceof org.bukkit.block.Skull) {
+                    org.bukkit.block.Skull skull = (org.bukkit.block.Skull) block.getState();
+                    if (skull.getOwningPlayer() != null) {
+                        blockInfo.setSkullOwner(skull.getOwningPlayer().getName());
+                    }
+                }
+            } catch (Exception e) {
+                plugin.getLogger().warning("Failed to read special block state for " + block.getType() +
+                        " at " + block.getLocation() + ": " + e.getMessage() +
+                        " (Block data will be preserved but special properties may be lost)");
+            }
+
+            return blockInfo;
+
+        } catch (Exception e) {
+            plugin.getLogger().warning("Failed to create BlockInfo for block at " + block.getLocation() +
+                    ": " + e.getMessage() + " - Using fallback");
+
+            try {
+                return new BlockInfo(block.getType(), block.getBlockData());
+            } catch (Exception fallbackError) {
+                plugin.getLogger().severe("Critical error creating BlockInfo fallback: " + fallbackError.getMessage());
+                return new BlockInfo(Material.AIR, Material.AIR.createBlockData());
             }
         }
-
-        return blockInfo;
     }
 
     public AreaBackup createBackupFromArea(ProtectedArea area) {
@@ -76,17 +122,37 @@ public class BackupManager {
         Location max = area.getMax();
         World world = min.getWorld();
 
+        int totalBlocks = area.getSize();
+        int processedBlocks = 0;
+        int errorBlocks = 0;
+
+        plugin.getLogger().info("Creating backup for area '" + area.getName() + "' with " + totalBlocks + " blocks");
+
         for (int x = min.getBlockX(); x <= max.getBlockX(); x++) {
             for (int y = min.getBlockY(); y <= max.getBlockY(); y++) {
                 for (int z = min.getBlockZ(); z <= max.getBlockZ(); z++) {
-                    Block block = world.getBlockAt(x, y, z);
-                    String key = x + "," + y + "," + z;
+                    try {
+                        Block block = world.getBlockAt(x, y, z);
+                        String key = x + "," + y + "," + z;
 
-                    BlockInfo blockInfo = createBlockInfo(block);
-                    blocks.put(key, blockInfo);
+                        BlockInfo blockInfo = createBlockInfo(block);
+                        blocks.put(key, blockInfo);
+                        processedBlocks++;
+
+                    } catch (Exception e) {
+                        errorBlocks++;
+                        plugin.getLogger().warning("Failed to backup block at " + x + "," + y + "," + z +
+                                ": " + e.getMessage());
+
+                        String key = x + "," + y + "," + z;
+                        blocks.put(key, new BlockInfo(Material.AIR, Material.AIR.createBlockData()));
+                    }
                 }
             }
         }
+
+        plugin.getLogger().info("Backup completed: " + processedBlocks + " blocks processed, " +
+                errorBlocks + " errors (replaced with air)");
 
         return new AreaBackup(LocalDateTime.now(), blocks);
     }
@@ -224,9 +290,124 @@ public class BackupManager {
                 skull.setOwningPlayer(owner);
                 skull.update(true, false);
             }
+
+            if (isPOIBlock(block.getType())) {
+                Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                    try {
+                        block.getState().update(true, true);
+                        block.getChunk().load();
+                    } catch (Exception e) {
+                    }
+                }, 2L);
+            }
+
         } catch (Exception e) {
             plugin.getLogger().warning("Failed to restore special data for block at " +
                     block.getLocation() + ": " + e.getMessage());
+        }
+    }
+
+    private boolean isPOIBlock(Material material) {
+        return POI_BLOCKS.contains(material) || BED_BLOCKS.contains(material);
+    }
+
+    public Map<String, Object> backupEntitiesInArea(ProtectedArea area) {
+        Map<String, Object> entities = new HashMap<>();
+        Location min = area.getMin();
+        Location max = area.getMax();
+        World world = min.getWorld();
+
+        try {
+            world.getEntities().stream()
+                    .filter(entity -> {
+                        Location loc = entity.getLocation();
+                        return loc.getBlockX() >= min.getBlockX() && loc.getBlockX() <= max.getBlockX() &&
+                                loc.getBlockY() >= min.getBlockY() && loc.getBlockY() <= max.getBlockY() &&
+                                loc.getBlockZ() >= min.getBlockZ() && loc.getBlockZ() <= max.getBlockZ();
+                    })
+                    .forEach(entity -> {
+                        if (entity instanceof org.bukkit.entity.ItemFrame) {
+                            org.bukkit.entity.ItemFrame frame = (org.bukkit.entity.ItemFrame) entity;
+
+                            Map<String, Object> frameData = new HashMap<>();
+                            frameData.put("type", "ITEM_FRAME");
+                            frameData.put("x", entity.getLocation().getX());
+                            frameData.put("y", entity.getLocation().getY());
+                            frameData.put("z", entity.getLocation().getZ());
+                            frameData.put("facing", frame.getFacing().name());
+                            frameData.put("rotation", frame.getRotation().name());
+
+                            if (frame.getItem() != null && frame.getItem().getType() != Material.AIR) {
+                                frameData.put("item", frame.getItem());
+                            }
+
+                            String key = "frame_" + entity.getLocation().getBlockX() + "_" +
+                                    entity.getLocation().getBlockY() + "_" +
+                                    entity.getLocation().getBlockZ();
+                            entities.put(key, frameData);
+                        }
+                        else if (entity instanceof org.bukkit.entity.ArmorStand) {
+                        }
+                    });
+
+        } catch (Exception e) {
+            plugin.getLogger().warning("Failed to backup entities: " + e.getMessage());
+        }
+
+        return entities;
+    }
+
+    public void restoreEntitiesInArea(ProtectedArea area, Map<String, Object> entityData) {
+        if (entityData == null || entityData.isEmpty()) return;
+
+        Location min = area.getMin();
+        Location max = area.getMax();
+        World world = min.getWorld();
+
+        world.getEntities().stream()
+                .filter(entity -> {
+                    Location loc = entity.getLocation();
+                    return loc.getBlockX() >= min.getBlockX() && loc.getBlockX() <= max.getBlockX() &&
+                            loc.getBlockY() >= min.getBlockY() && loc.getBlockY() <= max.getBlockY() &&
+                            loc.getBlockZ() >= min.getBlockZ() && loc.getBlockZ() <= max.getBlockZ();
+                })
+                .filter(entity -> entity instanceof org.bukkit.entity.ItemFrame)
+                .forEach(org.bukkit.entity.Entity::remove);
+
+        for (Map.Entry<String, Object> entry : entityData.entrySet()) {
+            try {
+                @SuppressWarnings("unchecked")
+                Map<String, Object> data = (Map<String, Object>) entry.getValue();
+
+                if ("ITEM_FRAME".equals(data.get("type"))) {
+                    double x = (Double) data.get("x");
+                    double y = (Double) data.get("y");
+                    double z = (Double) data.get("z");
+
+                    Location loc = new Location(world, x, y, z);
+                    org.bukkit.block.BlockFace facing = org.bukkit.block.BlockFace.valueOf((String) data.get("facing"));
+
+                    org.bukkit.entity.ItemFrame frame = world.spawn(loc, org.bukkit.entity.ItemFrame.class, itemFrame -> {
+                        itemFrame.setFacingDirection(facing);
+
+                        if (data.containsKey("rotation")) {
+                            org.bukkit.Rotation rotation = org.bukkit.Rotation.valueOf((String) data.get("rotation"));
+                            itemFrame.setRotation(rotation);
+                        }
+
+                        if (data.containsKey("item")) {
+                            ItemStack item = (ItemStack) data.get("item");
+                            itemFrame.setItem(item);
+                        }
+                    });
+
+                    plugin.getLogger().fine("Restored item frame at " + loc + " with item: " +
+                            (frame.getItem() != null ? frame.getItem().getType() : "none"));
+                }
+
+            } catch (Exception e) {
+                plugin.getLogger().warning("Failed to restore entity " + entry.getKey() + ": " + e.getMessage());
+            }
         }
     }
 
@@ -356,22 +537,45 @@ public class BackupManager {
     }
 
     public void createBackup(String areaName, ProtectedArea area) {
-        AreaBackup backup = createBackupFromArea(area);
+        try {
+            if (!Bukkit.isPrimaryThread()) {
+                Bukkit.getScheduler().runTask(plugin, () -> createBackup(areaName, area));
+                return;
+            }
 
-        if (!backupHistory.containsKey(areaName)) {
-            backupHistory.put(areaName, new ArrayList<>());
+            plugin.getLogger().info("Starting backup creation for area: " + areaName);
+
+            AreaBackup backup = createBackupFromArea(area);
+
+            if (!backupHistory.containsKey(areaName)) {
+                backupHistory.put(areaName, new ArrayList<>());
+            }
+
+            List<AreaBackup> backups = backupHistory.get(areaName);
+            backups.add(backup);
+
+            int maxBackups = configManager.getMaxBackupsPerArea();
+            if (backups.size() > maxBackups) {
+                AreaBackup removed = backups.remove(0);
+                fileManager.deleteBackupFile(areaName, removed.getId());
+                plugin.getLogger().info("Removed oldest backup for area: " + areaName);
+            }
+
+            try {
+                fileManager.saveBackupToFile(areaName, backup);
+                plugin.getLogger().info("Successfully saved backup for area: " + areaName +
+                        " (ID: " + backup.getId() + ", Blocks: " + backup.getBlocks().size() + ")");
+            } catch (Exception e) {
+                plugin.getLogger().severe("Failed to save backup file for area: " + areaName +
+                        " - " + e.getMessage());
+                e.printStackTrace();
+            }
+
+        } catch (Exception e) {
+            plugin.getLogger().severe("Critical error during backup creation for area: " + areaName +
+                    " - " + e.getMessage());
+            e.printStackTrace();
         }
-
-        List<AreaBackup> backups = backupHistory.get(areaName);
-        backups.add(backup);
-
-        int maxBackups = configManager.getMaxBackupsPerArea();
-        if (backups.size() > maxBackups) {
-            AreaBackup removed = backups.remove(0);
-            fileManager.deleteBackupFile(areaName, removed.getId());
-        }
-
-        fileManager.saveBackupToFile(areaName, backup);
     }
 
     public List<AreaBackup> getBackupHistory(String areaName) {

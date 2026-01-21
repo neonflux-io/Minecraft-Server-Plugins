@@ -4,6 +4,7 @@ import org.bukkit.*;
 import org.bukkit.block.banner.Pattern;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.bukkit.configuration.serialization.SerializableAs;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
@@ -11,6 +12,7 @@ import org.bukkit.util.io.BukkitObjectOutputStream;
 import java.io.*;
 import java.util.*;
 
+@SerializableAs("BlockInfo")
 public class BlockInfo implements Serializable, ConfigurationSerializable {
 
     private static final long serialVersionUID = 1L;
@@ -312,5 +314,6 @@ public class BlockInfo implements Serializable, ConfigurationSerializable {
 
     static {
         org.bukkit.configuration.serialization.ConfigurationSerialization.registerClass(BlockInfo.class);
+        org.bukkit.configuration.serialization.ConfigurationSerialization.registerClass(BlockInfo.class, "BlockInfo");
     }
 }
