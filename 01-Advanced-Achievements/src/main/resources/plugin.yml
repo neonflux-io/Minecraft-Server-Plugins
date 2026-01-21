@@ -1,0 +1,49 @@
+name: AdvancedAchievements
+version: 1.0.1
+description: Advanced Achievement System for Minecraft
+author: YourName
+website: https://example.com
+main: com.example.advancedachievements.AdvancedAchievements
+api-version: 1.20
+softdepend: [Vault]
+
+commands:
+  achievementadmin:
+    description: Achievement commands (admin and player)
+    usage: /achievementadmin <subcommand>
+    aliases: [achadmin, ach]
+
+permissions:
+  advancedachievements.admin:
+    description: Allows access to admin commands
+    default: op
+  advancedachievements.use:
+    description: Allows basic achievement usage
+    default: true
+  advancedachievements.gui:
+    description: Allows access to achievement GUI
+    default: true
+  advancedachievements.claim:
+    description: Allows claiming achievement rewards
+    default: true
+  advancedachievements.edit:
+    description: Allows editing achievements
+    default: op
+  advancedachievements.create:
+    description: Allows creating achievements
+    default: op
+  advancedachievements.delete:
+    description: Allows deleting achievements
+    default: op
+  advancedachievements.give:
+    description: Allows giving achievements to players
+    default: op
+  advancedachievements.reset:
+    description: Allows resetting player achievement progress
+    default: op
+  advancedachievements.resetall:
+    description: Allows resetting all player achievements
+    default: op
+  advancedachievements.setprogress:
+    description: Allows setting player achievement progress
+    default: op
