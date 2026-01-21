@@ -1,0 +1,24 @@
+name: GrapplingHook
+version: 1.0.0
+main: com.grapplinghook.GrapplingHookPlugin
+api-version: 1.19
+author: Andreas Hagen
+website: https://github.com/BerndHagen/Minecraft-Server-Plugins
+description: Transform your fishing rod into a grappling hook!
+
+commands:
+  grapplinghook:
+    description: Manage your grappling hook settings
+    usage: /grapplinghook [toggle|range|speed|boost|velocity|sound|particles|reset|info]
+    aliases: [hook, grapple, hookshot]
+
+permissions:
+  grapplinghook.use:
+    description: Allow player to use the grappling hook
+    default: true
+  grapplinghook.settings:
+    description: Allow player to configure their grappling hook settings
+    default: true
+  grapplinghook.admin:
+    description: Administrative access to grappling hook features
+    default: op
