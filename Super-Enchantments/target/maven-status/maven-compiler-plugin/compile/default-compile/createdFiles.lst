@@ -1,0 +1,4 @@
+org\example\commands\SuperEnchantCommand.class
+org\example\commands\EnchantListCommand.class
+org\example\util\EnchantmentManager.class
+org\example\SuperEnchantments.class
