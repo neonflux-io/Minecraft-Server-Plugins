@@ -1,0 +1,20 @@
+name: RailBoost
+version: 2.0.0
+main: de.railboost.RailBoostPlugin
+api-version: 1.16
+author: YourName
+description: Enhanced minecart system with presets and all minecart types
+
+commands:
+  railboost:
+    description: Main RailBoost command
+    usage: /railboost help
+    aliases: [rb, boost]
+
+permissions:
+  railboost.use:
+    description: Allows use of RailBoost features
+    default: true
+  railboost.admin:
+    description: Administrative access to RailBoost
+    default: op
