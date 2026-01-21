@@ -139,19 +139,21 @@ An advanced achievement system that tracks player progress for various task type
 A comprehensive area protection and backup system that allows players to create protected zones with automatic backups, undo/redo functionality, and advanced visualization features. Perfect for servers that need reliable area management with rollback capabilities.
 
 ### Core Features:
+- **Enhanced GUI System:** Comprehensive graphical interface with main menu, area management with creation wizard, advanced backup management with visual timeline, permission and trust management interfaces, visualization controls, and administrative tools
 - **Area Protection:** Create protected areas with position selection using wooden hoe tool
 - **Automatic Backups:** Scheduled backups with configurable intervals and retention policies
 - **Manual Backups:** Create backups on demand for important moments
 - **Undo/Redo System:** Full undo/redo functionality for area changes with history tracking
-- **Restoration System:** Restore areas to any previous backup state with preview functionality
+- **Advanced Restoration:** Restore areas to any previous backup state with preview functionality and time-based rollback
 - **Permission System:** Owner and trusted player system with granular permissions
-- **GUI Interface:** User-friendly inventory-based GUI for area and backup management
 - **Visualization:** Particle-based area boundary visualization with customizable effects
-- **Interval Restoration:** Automatic restoration on configurable intervals for specific uses
+- **Import/Export:** Export and import area data for portability, including WorldEdit schematic export
+- **WorldEdit Integration:** Enhanced functionality if WorldEdit is present
 - **Block State Support:** Full support for containers with contents (chests, barrels, etc.), signs with text, banners with patterns, and all complex block states
-- **Rollback System:** Time-based rollback functionality (e.g., restore to 2 hours ago)
-- **Preview System:** Preview backup states before restoration with particle effects
 - **Database Storage:** Persistent storage with file-based backup system
+- **Custom Icons:** Set custom icons for areas and backups
+- **Interval Management:** Automatic backup intervals and restoration scheduling
+- **Change Detection:** Scan for changes since last backup with comparison tools
 
 ### Getting Started:
 1. **Selection:** Use a wooden hoe to select two corners of your area (left-click pos1, right-click pos2)
@@ -163,6 +165,8 @@ A comprehensive area protection and backup system that allows players to create 
 
 | Command | Description |
 |---------|-------------|
+| `/rewind` | Open the AreaRewind management GUI |
+| `/rewind tool` | Get the area selection tool (wooden hoe) |
 | `/rewind pos1` | Set position 1 to block you're looking at |
 | `/rewind pos2` | Set position 2 to block you're looking at |
 | `/rewind save <name>` | Create protected area with current selection |
@@ -172,32 +176,38 @@ A comprehensive area protection and backup system that allows players to create 
 | `/rewind backup <area>` | Create manual backup of an area |
 | `/rewind restore <area> <backup_id/latest/oldest>` | Restore area from backup |
 | `/rewind undo <area>` | Undo last change to area |
-| `/rewind redo <area>` | Redo last undone change |
 | `/rewind history <area> [page]` | View backup history with pagination |
 | `/rewind rollback <area> <time>` | Rollback to specific time (e.g., 2h, 30m, 1d) |
-| `/rewind preview <area> <backup_id>` | Preview backup with particles |
+| `/rewind preview <area> [backup_id] [particle_type]` | Preview backup with particles |
 | `/rewind show <area>` | Visualize area boundaries |
-| `/rewind gui` | Open graphical interface |
+| `/rewind hide [area]` | Hide area visualization |
+| `/rewind trust <area> <player>` | Add trusted player to area |
+| `/rewind untrust <area> <player>` | Remove trusted player from area |
+| `/rewind export` | Export area's latest backup to WorldEdit .schem file |
 
 ### Administrative Commands:
 
 | Command | Description |
 |---------|-------------|
+| `/rewind reload` | Reload plugin configuration |
 | `/rewind delete <area>` | Delete area and all its backups |
 | `/rewind rename <old_name> <new_name>` | Rename an area |
+| `/rewind expand <area> <direction> <amount>` | Expand area in specified direction |
 | `/rewind contract <area> <direction> <amount>` | Shrink area in specified direction |
-| `/rewind trust <area> <player>` | Add trusted player to area |
-| `/rewind untrust <area> <player>` | Remove trusted player from area |
-| `/rewind permissions <area>` | View area permissions and trusted players |
+| `/rewind permission <add/remove/list> <area> [player]` | Manage area permissions |
+| `/rewind seticon <area> <material>` | Set custom icon for area |
+| `/rewind seticon backup <area> <backup_id> <material>` | Set custom icon for specific backup |
 | `/rewind cleanup <area> [days]` | Clean up old backups (default: 7 days) |
 | `/rewind scan <area>` | Scan for changes since last backup |
-| `/rewind diff <area> <id1> <id2>` | Compare two backups |
-| `/rewind interval <area> <minutes> <backup_id>` | Set auto-restore interval |
-| `/rewind particle <name>` | Set particle type for visualizations |
-| `/rewind status` | Show plugin status and statistics |
-| `/rewind reload` | Reload plugin configuration |
+| `/rewind diff <area> <id1> <id2>` | Compare two backups and show differences |
+| `/rewind interval <set/remove/check> <area> [minutes] [backup_id]` | Manage automatic backup intervals |
+| `/rewind restoreblock <area> <backup_id/latest/oldest> [world]` | Restore area from backup (for command blocks and console) |
+| `/rewind status` | Show system status and statistics |
+| `/rewind help` | Show help information |
 
-**Aliases:** `/ar`, `/arearewind` – **Tool:** Wooden Hoe for area selection
+**Aliases:** `/ar`, `/arearewind`  
+**Tool:** Wooden Hoe for area selection  
+**Command Aliases:** Most commands support shortened versions (e.g., `perm` for `permission`, `tp` for `teleport`, `compare` for `diff`)
 
 ## **Piston Crusher**
 
