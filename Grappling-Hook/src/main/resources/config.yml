@@ -1,0 +1,18 @@
+default-range: 30.0
+pull-speed: 2.0
+vertical-boost: 0.3
+hook-velocity-multiplier: 2.0
+play-sound: true
+show-particles: true
+
+min-range: 10.0
+max-range: 100.0
+
+min-pull-speed: 0.5
+max-pull-speed: 5.0
+
+min-vertical-boost: 0.0
+max-vertical-boost: 1.5
+
+min-hook-velocity: 1.0
+max-hook-velocity: 5.0

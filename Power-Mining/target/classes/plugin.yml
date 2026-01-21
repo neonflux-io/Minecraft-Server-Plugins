@@ -1,0 +1,106 @@
+name: PowerMining
+version: 1.0.0-SNAPSHOT
+main: de.andidoescode.powermining.PowerMining
+api-version: "1.21"
+description: Enhanced mining experience with mounted mining, magnet hoppers, and ore scanner bells
+author: Andreas Hagen
+website: https://github.com/BerndHagen/Minecraft-Server-Plugins
+
+commands:
+  powermining:
+    description: Power Mining main command
+    usage: /powermining <magnethopper|orebell|drill> [args...]
+    permission: powermining.use
+    aliases: [pm]
+
+permissions:
+  powermining.*:
+    description: Full access to Power Mining
+    default: op
+    children:
+      powermining.use.*: true
+      powermining.give.*: true
+  powermining.use.*:
+    description: Use all Power Mining features
+    default: true
+    children:
+      powermining.use.mountedmining: true
+      powermining.use.magnethopper: true
+      powermining.use.orescannerbell: true
+      powermining.use.minershelmet: true
+      powermining.use.escaperope: true
+      powermining.use.depthmeter: true
+      powermining.use.cavecompass: true
+      powermining.use.instantladder: true
+      powermining.use.autosmelterpickaxe: true
+      powermining.use.minersgoggles: true
+  powermining.use.mountedmining:
+    description: Use mounted mining feature
+    default: true
+  powermining.use.magnethopper:
+    description: Use magnet hopper feature
+    default: true
+  powermining.use.orescannerbell:
+    description: Use ore scanner bell feature
+    default: true
+  powermining.use.minershelmet:
+    description: Use miner's helmet feature
+    default: true
+  powermining.use.escaperope:
+    description: Use escape rope feature
+    default: true
+  powermining.use.depthmeter:
+    description: Use depth meter feature
+    default: true
+  powermining.use.cavecompass:
+    description: Use cave compass feature
+    default: true
+  powermining.use.instantladder:
+    description: Use instant ladder feature
+    default: true
+  powermining.use.autosmelterpickaxe:
+    description: Use auto-smelter pickaxe feature
+    default: true
+  powermining.use.minersgoggles:
+    description: Use miner's goggles feature
+    default: true
+  powermining.give.*:
+    description: Give Power Mining items
+    default: op
+    children:
+      powermining.give.magnethopper: true
+      powermining.give.orescannerbell: true
+      powermining.give.minershelmet: true
+      powermining.give.escaperope: true
+      powermining.give.depthmeter: true
+      powermining.give.cavecompass: true
+      powermining.give.instantladder: true
+      powermining.give.smelterpickaxe: true
+      powermining.give.minersgoggles: true
+  powermining.give.magnethopper:
+    description: Give magnet hoppers
+    default: op
+  powermining.give.orescannerbell:
+    description: Give ore scanner bells
+    default: op
+  powermining.give.minershelmet:
+    description: Give miner's helmets
+    default: op
+  powermining.give.escaperope:
+    description: Give escape ropes
+    default: op
+  powermining.give.depthmeter:
+    description: Give depth meters
+    default: op
+  powermining.give.cavecompass:
+    description: Give cave compasses
+    default: op
+  powermining.give.instantladder:
+    description: Give instant ladders
+    default: op
+  powermining.give.smelterpickaxe:
+    description: Give smelter's pickaxes
+    default: op
+  powermining.give.minersgoggles:
+    description: Give miner's goggles
+    default: op
