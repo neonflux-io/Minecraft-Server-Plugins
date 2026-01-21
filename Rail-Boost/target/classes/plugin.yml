@@ -1,0 +1,12 @@
+name: RailBoost
+main: de.railboost.RailBoostPlugin
+version: 1.0.0
+author: Bernd Julian Hagen
+github: https://github.com/BerndHagen/Minecraft-Server-Plugins
+api-version: 1.19
+commands:
+  railboost:
+    description: Main command for RailBoost. Control and configure all minecart features.
+    usage: |
+      /railboost <speed|autopickup|storage|speedometer|chunkload|magnet|effect|autosit|blacklist|info|help|configuration>
+    aliases: [rb]
