@@ -73,7 +73,10 @@ All plugins are designed to work seamlessly together and with popular server plu
     - [Player Commands](#player-commands-1)
 6. [Super Enchantments](#super-enchantments)
     - [Core Features](#core-features-4)
+    - [Custom Enchantments](#custom-enchantments)
+    - [Enchantment Compatibility](#enchantment-compatibility)
     - [Player Commands](#player-commands-2)
+    - [Usage Examples](#usage-examples)
 7. [License](#license)
 8. [Screenshots](#screenshots)
 
