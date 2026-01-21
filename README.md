@@ -55,27 +55,18 @@ All plugins are designed to work seamlessly together and with popular server plu
     - [First Launch & Configuration](#first-launch--configuration)
     - [Verifying Installation](#verifying-installation)
 2. [Advanced Achievements](#advanced-achievements)
-    - [Core Features](#core-features-advanced-achievements)
+    - [Core Features (Advanced Achievements)](#core-features-advanced-achievements)
     - [Administrative & Player Commands](#administrative--player-commands)
-    - [Command Aliases](#command-aliases-advanced-achievements)
 3. [Piston Crusher](#piston-crusher)
-    - [Core Features](#core-features-piston-crusher)
-    - [Example Setup (Piston Crusher)](#example-setup-piston-crusher)
-    - [Administrative Commands](#administrative-commands)
-    - [Important Notes](#important-notes-piston-crusher)
+    - [Core Features (Piston Crusher)](#core-features)
+    - [Example Setup (Piston Crusher)](#example-setup)
+    - [Administrative Commands (Piston Crusher)](#administrative-commands)
 4. [Rail Boost](#rail-boost)
-    - [Core Features](#core-features-rail-boost)
-    - [Player Commands](#player-commands)
-    - [Command Aliases](#command-aliases-rail-boost)
-    - [Prerequisites for Commands](#prerequisites-for-commands-rail-boost)
+    - [Core Features (Rail Boost)](#core-features-rail-boost)
+    - [Player Commands (Rail Boost)](#player-commands)
 5. [Super Enchantments](#super-enchantments)
-    - [Core Features](#core-features-super-enchantments)
-    - [How It Works](#how-it-works-1)
-    - [Supported Enchantments](#supported-enchantments)
-    - [Player Commands](#player-commands-1)
-    - [Usage Examples](#usage-examples-super-enchantments)
-    - [Command Requirements](#command-requirements-super-enchantments)
-    - [Error Handling](#error-handling-super-enchantments)
+    - [Core Features (Super Enchantments)](#core-features-super-enchantments)
+    - [Player Commands (Super Enchantments)](#player-commands-1)
 6. [License](#license)
 7. [Screenshots](#screenshots)
 
@@ -136,17 +127,30 @@ An advanced achievement system that tracks player progress for various task type
 
 **Aliases:** `/achadmin`, `/ach` (all subcommands as above)
 
-
 ## **Piston Crusher**
 
-An automation plugin that allows pistons to crush only whitelisted blocks into multiple items, with a configurable multiplier. The crusher block is freely selectable. All settings can be changed live via command, no server restart required.
+An automation plugin that allows pistons to crush only whitelisted blocks into multiple items, with a configurable multiplier. All settings can be changed live via command, no server restart required.
 
-### Core Features (Piston Crusher):
+### Core Features:
 - **Block Whitelist:** Only allowed blocks are crushed (configurable)
 - **Output Multiplier:** Sets how many items are dropped per block
-- **Crusher Block:** Any block type can be used as the crusher
+- **Crusher Block:** Must be movable by pistons (e.g., no obsidian, bedrock, etc.)
 - **Tab Completion:** Available for all material names
-- **Unmovable Blocks:** Prevents exploits (Obsidian, Bedrock, etc. are excluded)
+
+### Example Setup
+
+To build a working piston crusher, arrange the blocks in a straight line as follows:
+
+```
+[Piston] [Block to be crushed] [Crusher Block]
+```
+
+**How it works:**
+- When the piston extends, it pushes the block to be crushed into the crusher block
+- If the block to be crushed is on the whitelist, it will be destroyed and drop multiplied items according to the plugin settings
+- The piston must be facing directly toward the block to be crushed, which is then directly adjacent to the crusher block
+
+Make sure there is nothing blocking the piston from pushing the block into the crusher block. Only blocks on the whitelist will be crushed and multiplied.
 
 ### Administrative Commands:
 | Command | Description |
@@ -159,8 +163,7 @@ An automation plugin that allows pistons to crush only whitelisted blocks into m
 | `/pistoncrusher crusherblock <Material>` | Sets the crusher block |
 | `/pistoncrusher crusherblock` | Shows the current crusher block |
 
-**Note:** Material names must be valid (`COBBLESTONE`, `STONE`, ...). Multiplier ≥ 1.0. Changes take effect immediately.
-
+**Note:** Material names must be valid (`cobblestone`, `gold_block`, ...). Multiplier ≥ 1.0. Changes take effect immediately.
 
 ## **Rail Boost**
 
@@ -199,7 +202,6 @@ A minecart enhancement plugin that adds speed control, auto-pickup, inventory, m
 
 **Aliases:** `/rb` – Booleans: `true/false`, `on/off`, `1/0`. Most commands require you to be sitting in the minecart and it to be activated (`/railboost configuration true`).
 
-
 ## **Super Enchantments**
 
 A powerful enchantment system that allows players to apply all vanilla enchantments with levels 1–255, with full compatibility checks and context-aware tab completion. Clear error and success messages for all operations.
@@ -224,7 +226,6 @@ A powerful enchantment system that allows players to apply all vanilla enchantme
 - Level range: 1–255
 - Tab completion and error checking prevent invalid input
 
-
 ## **License**
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
@@ -233,11 +234,14 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 The following screenshots demonstrate the core functionality of each plugin, including the achievement system interface, automation, and enhanced minecart features.
 
+## **Screenshots**
+
+The following screenshots demonstrate the core functionality of each plugin, including the achievement system interface, automation, and enhanced minecart features.
+
 | Plugin - Advanced Achievement | Plugin - Advanced Achievement  | Plugin - Piston Crusher |
 |:----------------------------:|:----------------------------:|:----------------------:|
-| [<img src="img/img_v1.0.1-mcplugin-progress.png" alt="Plugin - Achievement Progress" width="300px" height="169px">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-progress.png) | [<img src="img/img_v1.0.1-mcplugin-unlocked.png" alt="Plugin - Achievement Unlocked" width="300px" height="169px">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-unlocked.png) | [<img src="img/img_v1.0.1-mcplugin-crusher.png" alt="Plugin - Piston Crusher" width="300px" height="169px">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-crusher.png) |
+| [<img src="img/img_v1.0.1-mcplugin-progress.png" alt="Plugin - Achievement Progress" width="300">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-progress.png) | [<img src="img/img_v1.0.1-mcplugin-unlocked.png" alt="Plugin - Achievement Unlocked" width="300">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-unlocked.png) | [<img src="img/img_v1.0.1-mcplugin-crusher.png" alt="Plugin - Piston Crusher" width="300">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-crusher.png) |
 
 | Plugin - Railboost | Plugin - Railboost | Plugin - Super Enchantments |
 |:----------------------------:|:----------------------------:|:----------------------:|
-| [<img src="img/img_v1.0.1-mcplugin-magnet.png" alt="Plugin - Magnet Feature" width="300px" height="169px">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-magnet.png) | [<img src="img/img_v1.0.1-mcplugin-effect.png" alt="Plugin - Particle Effect" width="300px" height="169px">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-effect.png) | [<img src="img/img_v1.0.1-mcplugin-enchantment.png" alt="Plugin - Super Enchantment" width="300px" height="169px">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-enchantment.png) |
-
+| [<img src="img/img_v1.0.1-mcplugin-magnet.png" alt="Plugin - Magnet Feature" width="300">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-magnet.png) | [<img src="img/img_v1.0.1-mcplugin-effect.png" alt="Plugin - Particle Effect" width="300">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-effect.png) | [<img src="img/img_v1.0.1-mcplugin-enchantment.png" alt="Plugin - Super Enchantment" width="300">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-enchantment.png) |
