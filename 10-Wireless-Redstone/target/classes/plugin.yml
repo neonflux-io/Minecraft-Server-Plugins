@@ -1,0 +1,28 @@
+name: WirelessRedstone
+version: 1.0.0-SNAPSHOT
+main: com.wirelessredstone.WirelessRedstonePlugin
+api-version: "1.21"
+description: Wireless Redstone plugin with linked copper bulbs and redstone lamps
+author: Andreas Hagen
+website: https://github.com/BerndHagen/Minecraft-Server-Plugins
+
+commands:
+  wireless:
+    description: Wireless Redstone commands
+    usage: /wireless <bulbs|lamps|chests|inspect|recover|gui|debug> [options]
+    permission: wirelessredstone.use
+    aliases: [wr]
+
+permissions:
+  wirelessredstone.use:
+    description: Allows using wireless redstone commands
+    default: op
+  wirelessredstone.teleport:
+    description: Allows teleporting to bulb locations via GUI
+    default: op
+  wirelessredstone.remove:
+    description: Allows removing bulb groups via GUI
+    default: op
+  wirelessredstone.admin:
+    description: Allows viewing and managing all players' bulb groups
+    default: op
