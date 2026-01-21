@@ -234,14 +234,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 The following screenshots demonstrate the core functionality of each plugin, including the achievement system interface, automation, and enhanced minecart features.
 
-## **Screenshots**
-
-The following screenshots demonstrate the core functionality of each plugin, including the achievement system interface, automation, and enhanced minecart features.
-
-## **Screenshots**
-
-The following screenshots demonstrate the core functionality of each plugin, including the achievement system interface, automation, and enhanced minecart features.
-
 <table>
   <tr>
     <th>Plugin - Advanced Achievement</th>
@@ -249,9 +241,15 @@ The following screenshots demonstrate the core functionality of each plugin, inc
     <th>Plugin - Piston Crusher</th>
   </tr>
   <tr>
-    <td><img src="img/img_v1.0.1-mcplugin-progress.png" alt="Achievement Progress" width="300"></td>
-    <td><img src="img/img_v1.0.1-mcplugin-unlocked.png" alt="Achievement Unlocked" width="300"></td>
-    <td><img src="img/img_v1.0.1-mcplugin-crusher.png" alt="Piston Crusher" width="300"></td>
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-progress.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-progress.png" alt="Achievement Progress" width="300">
+    </a></td>
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-unlocked.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-unlocked.png" alt="Achievement Unlocked" width="300">
+    </a></td>
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-crusher.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-crusher.png" alt="Piston Crusher" width="300">
+    </a></td>
   </tr>
   <tr>
     <th>Plugin - Railboost</th>
@@ -259,8 +257,16 @@ The following screenshots demonstrate the core functionality of each plugin, inc
     <th>Plugin - Super Enchantments</th>
   </tr>
   <tr>
-    <td><img src="img/img_v1.0.1-mcplugin-magnet.png" alt="Magnet Feature" width="300"></td>
-    <td><img src="img/img_v1.0.1-mcplugin-effect.png" alt="Particle Effect" width="300"></td>
-    <td><img src="img/img_v1.0.1-mcplugin-enchantment.png" alt="Super Enchantment" width="300"></td>
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-magnet.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-magnet.png" alt="Magnet Feature" width="300">
+    </a></td>
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-effect.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-effect.png" alt="Particle Effect" width="300">
+    </a></td>
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-enchantment.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-enchantment.png" alt="Super Enchantment" width="300">
+    </a></td>
   </tr>
 </table>
+
+
