@@ -18,10 +18,13 @@ Each plugin is built with performance in mind and offers extensive configuration
 
 - **Advanced Achievements:** Comprehensive achievement system with custom rewards, progress tracking, and database integration
 - **Area Rewind:** Advanced area protection and backup system with undo/redo functionality, automatic backups, and GUI management
+- **Grappling Hook:** Transforms fishing rods into grappling hooks with configurable range, pull speed, and per-player settings
 - **Map Revealer:** Automatically reveal entire maps with customizable color schemes and locking functionality
 - **Piston Crusher:** Automated block crushing system using pistons with configurable materials and multipliers  
+- **Power Mining:** Enhanced mining experience with mounted mining, magnet hoppers, ore scanner, escape ropes, and auto-smelting
 - **Rail Boost:** Enhanced minecart system with speed control, auto-pickup, storage, and advanced transportation features
 - **Super Enchantments:** Advanced enchantment system allowing enchantments beyond vanilla limits with level 1-255 support
+- **Wireless Redstone:** Wirelessly link copper bulbs, redstone lamps, and containers that sync their states across any distance
 
 ### **Key Features**
 
@@ -65,24 +68,34 @@ All plugins are designed to work seamlessly together and with popular server plu
     - [Getting Started](#getting-started-1)
     - [Player Commands](#player-commands)
     - [Administrative Commands](#administrative-commands)
-4. [Map Revealer](#map-revealer)
+4. [Grappling Hook](#grappling-hook)
     - [Core Features](#core-features-2)
     - [Player Commands](#player-commands-1)
-5. [Piston Crusher](#piston-crusher)
+5. [Map Revealer](#map-revealer)
     - [Core Features](#core-features-3)
+    - [Player Commands](#player-commands-2)
+6. [Piston Crusher](#piston-crusher)
+    - [Core Features](#core-features-4)
     - [Example Setup](#example-setup)
     - [Administrative Commands](#administrative-commands-1)
-6. [Rail Boost](#rail-boost)
-    - [Core Features](#core-features-4)
-    - [Player Commands](#player-commands-2)
-7. [Super Enchantments](#super-enchantments)
+7. [Power Mining](#power-mining)
     - [Core Features](#core-features-5)
+    - [Player Commands](#player-commands-3)
+8. [Rail Boost](#rail-boost)
+    - [Core Features](#core-features-6)
+    - [Player Commands](#player-commands-4)
+9. [Super Enchantments](#super-enchantments)
+    - [Core Features](#core-features-7)
     - [Custom Enchantments](#custom-enchantments)
     - [Enchantment Compatibility](#enchantment-compatibility)
-    - [Player Commands](#player-commands-3)
+    - [Player Commands](#player-commands-5)
     - [Usage Examples](#usage-examples)
-8. [License](#license)
-9. [Screenshots](#screenshots)
+10. [Wireless Redstone](#wireless-redstone)
+    - [Core Features](#core-features-8)
+    - [Player Commands](#player-commands-6)
+    - [Bulb & Container Variants](#bulb--container-variants)
+11. [License](#license)
+12. [Screenshots](#screenshots)
 
 ## **Getting Started**
 
@@ -216,6 +229,38 @@ A comprehensive area protection and backup system that allows players to create 
 **Tool:** Wooden Hoe for area selection  
 **Command Aliases:** Most commands support shortened versions (e.g., `perm` for `permission`, `tp` for `teleport`, `compare` for `diff`)
 
+## **Grappling Hook**
+
+A fun utility plugin that transforms fishing rods into grappling hooks! Players can launch hooks that pull them towards the landing location, with fully customizable settings for range, speed, and visual effects.
+
+### Core Features:
+- **Toggle System:** Players can enable/disable the grappling hook feature individually
+- **Fully Customizable:** Each player can configure all grappling hook parameters
+- **Extended Range:** Hooks travel further than normal fishing rods (configurable 10-100 blocks)
+- **Pull Mechanics:** Players are pulled to where the hook lands with adjustable speed
+- **Per-Player Configuration:** All settings are saved per-player and persist through sessions
+- **Sound & Particle Effects:** Visual and audio feedback that can be toggled per-player
+- **Vertical Boost:** Configurable upward momentum when being pulled
+- **Reset Command:** Restore all settings to server defaults instantly
+
+### Player Commands:
+
+| Command | Description |
+|---------|-------------|
+| `/grapplinghook` | Toggle the grappling hook on/off |
+| `/grapplinghook toggle` | Toggle the grappling hook on/off |
+| `/grapplinghook range <value>` | Set your hook range (10-100 blocks) |
+| `/grapplinghook speed <value>` | Set pull speed (how fast you're pulled) |
+| `/grapplinghook boost <value>` | Set vertical boost (upward momentum) |
+| `/grapplinghook velocity <value>` | Set hook throw velocity |
+| `/grapplinghook sound` | Toggle sound effects on/off |
+| `/grapplinghook particles` | Toggle particle effects on/off |
+| `/grapplinghook reset` | Reset all settings to server defaults |
+| `/grapplinghook info` | View your current settings |
+
+**Aliases:** `/hook`, `/grapple`, `/hookshot`  
+**Requirements:** Hold a fishing rod and right-click to launch the hook
+
 ## **Map Revealer**
 
 A utility plugin that allows players to instantly reveal entire maps without having to explore every chunk. Features multiple color schemes for thematic map appearances and automatic map locking to preserve custom reveals.
@@ -281,6 +326,37 @@ Make sure there is nothing blocking the piston from pushing the block into the c
 | `/pistoncrusher crusherblock` | Shows the current crusher block |
 
 **Note:** Material names must be valid (`cobblestone`, `gold_block`, ...). Multiplier ≥ 1.0. Changes take effect immediately.
+
+## **Power Mining**
+
+A comprehensive mining enhancement plugin that adds powerful tools and features to improve the mining experience. From mounted mining while riding horses to magical ore-revealing goggles, this plugin transforms how players explore caves and gather resources.
+
+### Core Features:
+- **Mounted Mining (Drill):** Automatically mine a 3x3x3 area while riding horses, donkeys, or mules
+- **Magnet Hopper:** Special hoppers that attract nearby dropped items like a magnet with configurable radius
+- **Ore Scanner Bell:** Placeable bells that reveal all ores in a radius with glowing outlines when activated
+- **Miner's Helmet:** Gold helmet that grants permanent night vision while worn
+- **Escape Rope:** Magical leads that remember a location and teleport you back (single-use)
+- **Cave Compass:** Mystical compass that points to nearby structures (dungeons, mineshafts, strongholds, etc.)
+- **Smelter's Pickaxe:** Special pickaxe that auto-smelts ores when mining (Fortune compatible)
+- **Miner's Goggles:** Leather helmet that reveals nearby ores with glowing outlines in real-time
+
+### Player Commands:
+
+| Command | Description |
+|---------|-------------|
+| `/pm magnethopper [player] [radius]` | Give a Magnet Hopper |
+| `/pm orebell [player] [radius] [--filter ORE_TYPE] [--duration TICKS]` | Give an Ore Scanner Bell |
+| `/pm helmet [player]` | Give a Miner's Helmet |
+| `/pm escaperope [player]` | Give an Escape Rope |
+| `/pm cavecompass [player]` | Give a Cave Compass |
+| `/pm smelterpick [player]` | Give a Smelter's Pickaxe |
+| `/pm goggles [player] [radius] [--filter ORE_TYPE]` | Give Miner's Goggles |
+| `/pm drill` | Show mounted mining help |
+| `/pm help` | Show all commands |
+
+**Aliases:** `/powermining`, `/pm`  
+**Ore Colors:** Diamond (Cyan), Emerald (Bright Green), Gold (Gold), Iron (Tan), Copper (Orange-Brown), Redstone (Red), Lapis (Blue), Coal (Dark Gray), Quartz (White), Ancient Debris (Brown)
 
 ## **Rail Boost**
 
@@ -374,6 +450,52 @@ A comprehensive enchantment system that extends vanilla Minecraft enchanting cap
 
 **Note:** Custom enchantments use a sophisticated trigger system that responds to different events (combat, interaction, projectile hits) and include built-in cooldowns to maintain game balance. All effects are configurable through the plugin's config.yml file.
 
+## **Wireless Redstone**
+
+A powerful plugin that enables players to create groups of wirelessly linked blocks that synchronize their states across any distance. Link copper bulbs, redstone lamps, chests, shulker boxes, and copper chests for seamless wireless automation and lighting systems.
+
+### Core Features:
+- **Wireless Bulbs & Lamps:** Create linked groups of copper bulbs or redstone lamps that sync their lit/unlit state (2-26 per group)
+- **Wireless Containers:** Create linked groups of chests, shulker boxes, or copper chests that share inventory in real-time
+- **Management GUI:** Visual interface to manage all wireless groups with category organization
+- **Circuit Analyser:** Diagnostic tool for inspecting wireless blocks with WireView mode for color-coded outlines
+- **Connector Tool:** Management tool for adding/removing blocks from groups with creation mode for new groups
+- **Block Recovery:** Recover lost or broken wireless blocks that belong to existing groups
+- **All Copper Variants:** Support for normal, exposed, weathered, and oxidized copper (plus waxed versions)
+- **All Shulker Colors:** Support for all 17 shulker box colors
+- **Hopper Compatible:** Wireless containers work seamlessly with hoppers for automation
+- **Persistent Data:** All data saved automatically and survives server restarts
+
+### Player Commands:
+
+| Command | Description |
+|---------|-------------|
+| `/wireless bulbs [count] [variant]` | Get linked copper bulbs |
+| `/wireless lamps [count]` | Get linked redstone lamps |
+| `/wireless chests [count] [variant]` | Get linked containers |
+| `/wireless append <group> [count]` | Add more blocks to existing group |
+| `/wireless recover <group>` | Recover lost/missing blocks in group |
+| `/wireless setname <group> <newName>` | Rename a group |
+| `/wireless setcategory <group> <cat>` | Assign group to a category (or 'none') |
+| `/wireless tool inspect [player]` | Get a Circuit Analyser diagnostic tool |
+| `/wireless tool connector <group>` | Get a Connector Tool (creates group if new) |
+| `/wireless gui [--all]` | Open category selection GUI |
+| `/wireless debug on\|off` | Toggle sync debug messages |
+| `/wireless reload` | Reload configuration files (admin only) |
+
+### Bulb & Container Variants:
+
+| Bulb Variants | Container Variants |
+|---------------|-------------------|
+| `--copper` (default) | `--chest` (default) |
+| `--exposed` | `--shulker` (purple) |
+| `--weathered` | `--white`, `--orange`, etc. (all 16 colors) |
+| `--oxidized` | `--copper`, `--copper-exposed`, `--copper-weathered`, `--copper-oxidized` |
+| | `--copper-waxed`, `--copper-exposed-waxed`, etc. |
+
+**Aliases:** `/wr`  
+**Optional Creation Flags:** `--name=<name>` and `--category=<category>` when creating bulbs, lamps, or chests
+
 ## **NPC Item Pickup and Drop**
 
 A dynamic Citizens2 enhancement plugin that brings NPCs to life by allowing them to interact with the world through item collection and strategic behaviors. NPCs can automatically detect, move towards, and collect dropped items, storing them in virtual inventories that persist until death. The plugin also features an advanced "thief mode" where designated NPCs can steal items from containers, adding unique gameplay mechanics to your server.
@@ -460,33 +582,37 @@ The following screenshots demonstrate the core functionality of each plugin, inc
   <tr>
     <th>Plugin - Advanced Achievement</th>
     <th>Plugin - Advanced Achievement</th>
-    <th>Plugin - Area Rewind</th>
   </tr>
   <tr>
     <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-progress.png" target="_blank" rel="noopener noreferrer">
-      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-progress.png" alt="Achievement Progress" width="300">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-progress.png" alt="Achievement Progress" width="450">
     </a></td>
     <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-unlocked.png" target="_blank" rel="noopener noreferrer">
-      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-unlocked.png" alt="Achievement Unlocked" width="300">
-    </a></td>
-    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-arearewind.png" target="_blank" rel="noopener noreferrer">
-      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-arearewind.png" alt="Area Rewind GUI" width="300">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-unlocked.png" alt="Achievement Unlocked" width="450">
     </a></td>
   </tr>
   <tr>
+    <th>Plugin - Area Rewind</th>
     <th>Plugin - Piston Crusher</th>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-arearewind.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-arearewind.png" alt="Area Rewind GUI" width="450">
+    </a></td>
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-crusher.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-crusher.png" alt="Piston Crusher" width="450">
+    </a></td>
+  </tr>
+  <tr>
     <th>Plugin - Railboost</th>
     <th>Plugin - Super Enchantments</th>
   </tr>
   <tr>
-    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-crusher.png" target="_blank" rel="noopener noreferrer">
-      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-crusher.png" alt="Piston Crusher" width="300">
-    </a></td>
     <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-effect.png" target="_blank" rel="noopener noreferrer">
-      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-effect.png" alt="Magnet Feature" width="300">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-effect.png" alt="Magnet Feature" width="450">
     </a></td>
     <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-enchantment.png" target="_blank" rel="noopener noreferrer">
-      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-enchantment.png" alt="Super Enchantment" width="300">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-enchantment.png" alt="Super Enchantment" width="450">
     </a></td>
   </tr>
 </table>
