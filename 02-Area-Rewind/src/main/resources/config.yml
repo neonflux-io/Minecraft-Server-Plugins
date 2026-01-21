@@ -1,0 +1,17 @@
+backup:
+  max-backups-per-area: 50
+
+performance:
+  max-area-size: 1000000
+  rate-limit-cooldown: 1000
+
+  restore:
+    max-batch-size: 400
+    min-batch-size: 100
+visualization:
+  particle-distance: 50
+
+selection:
+  wooden-hoe:
+    force-enabled: false
+    auto-fallback: true
