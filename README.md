@@ -35,8 +35,8 @@ Whether you're running a survival server, creative server, or custom game mode, 
 These plugins are compatible with major Minecraft server platforms:
 
 - **Server Software:** `Spigot`, `Paper`, `Purpur`, `CraftBukkit`
-- **Minecraft Versions:** `1.19+`, `1.20+`, `1.21+`
-- **Java Requirements:** `Java 17+` (recommended Java 21)
+- **Minecraft Versions:** `1.19+`, `1.20+`, `1.21+` (also compatible with higher versions)
+- **Java Requirements:** `Java 17+`
 
 ### **Plugin Compatibility**
 
