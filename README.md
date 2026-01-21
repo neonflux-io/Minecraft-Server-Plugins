@@ -239,40 +239,39 @@ Make sure there is nothing blocking the piston from pushing the block into the c
 
 ## **Rail Boost**
 
-A minecart enhancement plugin that adds speed control, auto-pickup, inventory, magnetism, particles, chunkloading, and more – all individually configurable per minecart.
+A comprehensive minecart enhancement plugin that transforms vanilla minecart transportation into a powerful and customizable system. Each minecart can be individually configured with speed levels, automated item collection, built-in storage, and advanced physics improvements for reliable rail-based transportation networks.
 
 ### Core Features:
-- **Speed Levels:** 6 levels (0.25x to 4.0x), switchable live
-- **Auto-Pickup:** Items in a radius are automatically collected (radius configurable)
-- **Inventory:** Each minecart has its own storage
-- **Speedometer:** BossBar shows current speed
-- **Chunkloading:** Minecarts keep chunks loaded
-- **Magnetism:** Minecarts attract each other (optional)
-- **Particle Effects:** Various particles selectable
-- **Auto-Sit:** Automatic boarding
-- **Blacklist:** Certain items are not picked up
+- **Speed Control:** 6 configurable speed levels (0.25x to 4.0x) with intelligent physics handling for curves and uphill sections
+- **Auto-Pickup System:** Automatic item collection within configurable radius (1-5 blocks) with customizable blacklist filtering
+- **Storage Integration:** Each minecart has its own 27-slot inventory accessible via GUI, with automatic item sorting
+- **Advanced Physics:** Enhanced curve navigation, uphill momentum preservation, and anti-stuck mechanisms for smooth travel
+- **Magnetism System:** Optional minecart-to-minecart attraction for train formation with intelligent collision prevention
+- **Visual Effects:** Customizable particle trails with intensity scaling based on speed and multiple particle types
+- **Performance Tools:** Real-time speedometer with BossBar display showing current velocity in km/h
+- **Automation Features:** Auto-sit functionality for seamless boarding and chunkloading for uninterrupted long-distance travel
+- **Persistent Configuration:** All settings are saved per-minecart and persist through server restarts
 
 ### Player Commands:
 | Command | Description |
-|--------|--------------|
-| `/railboost speed <1-6>` | Sets the speed |
-| `/railboost autopickup <true/false>` | Enables/disables auto-pickup |
-| `/railboost autopickup radius <1-5>` | Sets the pickup radius |
-| `/railboost storage` | Opens the minecart inventory |
-| `/railboost speedometer <true/false>` | Shows/hides the BossBar |
-| `/railboost chunkload <true/false>` | Chunkloading on/off |
-| `/railboost magnet <true/false>` | Magnetism on/off |
-| `/railboost effect <true/false>` | Particle effects on/off |
-| `/railboost effect type <Particle>` | Sets the particle type |
-| `/railboost autosit <true/false>` | Automatic boarding |
-| `/railboost blacklist add <Item>` | Adds an item to the blacklist |
-| `/railboost blacklist remove <Item>` | Removes an item from the blacklist |
-| `/railboost blacklist list` | Shows the blacklist |
-| `/railboost configuration <true/false>` | Enables/disables RailBoost for the minecart |
-| `/railboost info` | Shows all settings |
-| `/railboost help` | Help for all commands |
+|---------|-------------|
+| `/railboost speed <1-6>` | Sets speed level (0.25x to 4.0x multiplier) |
+| `/railboost autopickup <true/false>` | Toggles automatic item collection |
+| `/railboost autopickup radius <1-5>` | Sets pickup radius in blocks |
+| `/railboost storage` | Opens minecart's dedicated inventory |
+| `/railboost speedometer <true/false>` | Shows/hides real-time speed display |
+| `/railboost chunkload <true/false>` | Enables chunk loading while traveling |
+| `/railboost magnet <true/false>` | Toggles minecart magnetism for train formation |
+| `/railboost effect <true/false>` | Enables particle trail effects |
+| `/railboost effect type <particle>` | Sets particle type (FLAME, HEART, CLOUD, etc.) |
+| `/railboost autosit <true/false>` | Automatic boarding when approaching minecart |
+| `/railboost blacklist add/remove <item>` | Manages auto-pickup item filter |
+| `/railboost blacklist list` | Shows current blacklisted items |
+| `/railboost info` | Displays all current minecart settings |
 
-**Aliases:** `/rb` – Booleans: `true/false`, `on/off`, `1/0`. Most commands require you to be sitting in the minecart and it to be activated (`/railboost configuration true`).
+**Note:** Most commands require sitting in an activated minecart. Use `/railboost info` to verify activation status.
+
+**Aliases:** `/rb` – **Activation:** Automatic when using any command while in a minecart
 
 ## **Super Enchantments**
 
