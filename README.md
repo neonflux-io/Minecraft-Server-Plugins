@@ -284,10 +284,10 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 The following screenshots demonstrate the core functionality of each plugin, including the achievement system interface, automation, and enhanced minecart features.
 
-| Plugin - Achievement Progress | Plugin - Achievement Unlocked | Plugin - Piston Crusher |
+| MC Plugin - Achievement Progress | MC Plugin - Achievement Unlocked | MC Plugin - Piston Crusher |
 |:----------------------------:|:----------------------------:|:----------------------:|
-| <img src="img/img_v1.0.0-mcplugin-progress.png" alt="Plugin - Achievement Progress" width="100%"> | <img src="img/img_v1.0.0-mcplugin-unlocked.png" alt="Plugin - Achievement Unlocked" width="100%"> | <img src="img/img_v1.0.0-mcplugin-crusher.png" alt="Plugin - Piston Crusher" width="100%"> |
-| Plugin - Magnet Feature | Plugin - Particle Effect | Plugin - Super Enchantment |
-| <img src="img/img_v1.0.0-mcplugin-magnet.png" alt="Plugin - Magnet Feature" width="100%"> | <img src="img/img_v1.0.0-mcplugin-effect.png" alt="Plugin - Particle Effect" width="100%"> | <img src="img/img_v1.0.0-mcplugin-enchantment.png" alt="Plugin - Super Enchantment" width="100%"> |
-| Plugin - Overview |
-| <img src="img/img_v1.0.0-mcplugin.png" alt="Plugin - Overview" width="100%"> |
+| <img src="img/img_v1.0.0-mcplugin-progress.png" alt="Plugin - Achievement Progress" width="300px"> | <img src="img/img_v1.0.0-mcplugin-unlocked.png" alt="Plugin - Achievement Unlocked" width="300px"> | <img src="img/img_v1.0.0-mcplugin-crusher.png" alt="Plugin - Piston Crusher" width="300px"> |
+
+| MC Plugin - Railboost Magnet | MC Plugin - Railboost Effect | MC Plugin - Super Enchantment |
+|:----------------------------:|:----------------------------:|:----------------------:|
+| <img src="img/img_v1.0.0-mcplugin-magnet.png" alt="Plugin - Magnet Feature" width="300px"> | <img src="img/img_v1.0.0-mcplugin-effect.png" alt="Plugin - Particle Effect" width="300px"> | <img src="img/img_v1.0.0-mcplugin-enchantment.png" alt="Plugin - Super Enchantment" width="300px"> |
