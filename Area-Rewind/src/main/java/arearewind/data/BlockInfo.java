@@ -24,6 +24,7 @@ public class BlockInfo implements Serializable, ConfigurationSerializable {
     private ItemStack[] containerContents;
     private ItemStack jukeboxRecord;
     private String skullOwner;
+    private String skullData; // Base64 serialized skull data for custom heads
     private Material flowerPotItem;
     private String containerContentsDebug;
     private String containerContentsBase64;
@@ -122,6 +123,14 @@ public class BlockInfo implements Serializable, ConfigurationSerializable {
         this.skullOwner = skullOwner;
     }
 
+    public String getSkullData() {
+        return skullData;
+    }
+
+    public void setSkullData(String skullData) {
+        this.skullData = skullData;
+    }
+
     public Material getFlowerPotItem() {
         return flowerPotItem;
     }
@@ -139,7 +148,8 @@ public class BlockInfo implements Serializable, ConfigurationSerializable {
     }
 
     private ItemStack[] cloneItemStackArray(ItemStack[] original) {
-        if (original == null) return null;
+        if (original == null)
+            return null;
 
         ItemStack[] clone = new ItemStack[original.length];
         for (int i = 0; i < original.length; i++) {
@@ -149,7 +159,8 @@ public class BlockInfo implements Serializable, ConfigurationSerializable {
     }
 
     public static String serializeItemStackArrayToBase64(ItemStack[] items) {
-        if (items == null) return null;
+        if (items == null)
+            return null;
 
         try {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -170,7 +181,8 @@ public class BlockInfo implements Serializable, ConfigurationSerializable {
     }
 
     public static ItemStack[] deserializeItemStackArrayFromBase64(String data) {
-        if (data == null || data.isEmpty()) return null;
+        if (data == null || data.isEmpty())
+            return null;
 
         try {
             ByteArrayInputStream inputStream = new ByteArrayInputStream(Base64.getDecoder().decode(data));
@@ -193,7 +205,8 @@ public class BlockInfo implements Serializable, ConfigurationSerializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof BlockInfo)) return false;
+        if (!(obj instanceof BlockInfo))
+            return false;
         BlockInfo other = (BlockInfo) obj;
         return material == other.material &&
                 blockDataString.equals(other.blockDataString) &&
@@ -202,6 +215,7 @@ public class BlockInfo implements Serializable, ConfigurationSerializable {
                 Arrays.deepEquals(containerContents, other.containerContents) &&
                 Objects.equals(jukeboxRecord, other.jukeboxRecord) &&
                 Objects.equals(skullOwner, other.skullOwner) &&
+                Objects.equals(skullData, other.skullData) &&
                 Objects.equals(flowerPotItem, other.flowerPotItem);
     }
 
@@ -209,7 +223,7 @@ public class BlockInfo implements Serializable, ConfigurationSerializable {
     public int hashCode() {
         return Objects.hash(material, blockDataString, bannerPatterns,
                 Arrays.hashCode(signLines), Arrays.deepHashCode(containerContents),
-                jukeboxRecord, skullOwner, flowerPotItem);
+                jukeboxRecord, skullOwner, skullData, flowerPotItem);
     }
 
     @Override
@@ -226,7 +240,8 @@ public class BlockInfo implements Serializable, ConfigurationSerializable {
         if (containerContents != null) {
             int itemCount = 0;
             for (ItemStack item : containerContents) {
-                if (item != null && item.getType() != Material.AIR) itemCount++;
+                if (item != null && item.getType() != Material.AIR)
+                    itemCount++;
             }
             sb.append(" (Container: ").append(itemCount).append(" items)");
         }
@@ -234,7 +249,11 @@ public class BlockInfo implements Serializable, ConfigurationSerializable {
             sb.append(" (Jukebox: ").append(jukeboxRecord.getType()).append(")");
         }
         if (skullOwner != null) {
-            sb.append(" (Skull: ").append(skullOwner).append(")");
+            sb.append(" (Skull: ").append(skullOwner);
+            if (skullData != null) {
+                sb.append(" [Custom]");
+            }
+            sb.append(")");
         }
         if (flowerPotItem != null) {
             sb.append(" (Pot: ").append(flowerPotItem).append(")");
@@ -264,6 +283,9 @@ public class BlockInfo implements Serializable, ConfigurationSerializable {
         }
         if (skullOwner != null) {
             map.put("skullOwner", skullOwner);
+        }
+        if (skullData != null) {
+            map.put("skullData", skullData);
         }
         if (flowerPotItem != null) {
             map.put("flowerPotItem", flowerPotItem.name());
@@ -303,6 +325,10 @@ public class BlockInfo implements Serializable, ConfigurationSerializable {
 
         if (map.containsKey("skullOwner")) {
             blockInfo.setSkullOwner((String) map.get("skullOwner"));
+        }
+
+        if (map.containsKey("skullData")) {
+            blockInfo.setSkullData((String) map.get("skullData"));
         }
 
         if (map.containsKey("flowerPotItem")) {
