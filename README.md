@@ -7,7 +7,7 @@
   <b>Various enhancements for gameplay, administration, and server features.</b>
 </p>
 <p align="center">
-  <a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/releases"><img src="https://img.shields.io/github/v/release/BerndHagen/Minecraft-Server-Plugins?include_prereleases&style=flat-square&color=4CAF50" alt="Latest Release"></a>&nbsp;&nbsp;<a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License"></a>&nbsp;&nbsp;<img src="https://img.shields.io/badge/Java-17+-orange?style=flat-square" alt="Java Version">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Minecraft-1.19+-green?style=flat-square" alt="Minecraft Version">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Platform-Spigot%2FPaper-yellow?style=flat-square" alt="Platform">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square" alt="Status">&nbsp;&nbsp;<a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/issues"><img src="https://img.shields.io/github/issues/BerndHagen/Minecraft-Server-Plugins?style=flat-square&color=orange" alt="Open Issues"></a>
+  <a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/releases"><img src="https://img.shields.io/github/v/release/BerndHagen/Minecraft-Server-Plugins?include_prereleases&style=flat-square&color=4CAF50" alt="Latest Release"></a>&nbsp;&nbsp;<a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License"></a>&nbsp;&nbsp;<img src="https://img.shields.io/badge/Java-17+-orange?style=flat-square" alt="Java Version">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Minecraft-1.21+-green?style=flat-square" alt="Minecraft Version">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Platform-Spigot%2FPaper-yellow?style=flat-square" alt="Platform">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square" alt="Status">&nbsp;&nbsp;<a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/issues"><img src="https://img.shields.io/github/issues/BerndHagen/Minecraft-Server-Plugins?style=flat-square&color=orange" alt="Open Issues"></a>
 </p>
 
 This collection provides **open-source Minecraft plugins** designed to add functionality to server gameplay. Originally developed for an own Minecraft server to enhance industrial automation, area protection, and backup capabilities, these plugins are now shared with the community to benefit other server administrators.
@@ -28,7 +28,7 @@ Each plugin is built with performance in mind and offers extensive configuration
 - **Performance Optimized:** Efficient code designed for minimal server impact and smooth gameplay
 - **Highly Configurable:** Extensive configuration options to customize behavior for your server needs
 - **Database Integration:** Advanced data storage and player progress tracking capabilities
-- **Modern API Support:** Built for Minecraft 1.19+ with backwards compatibility considerations
+- **Modern API Support:** Built for Minecraft 1.21+ with backwards compatibility considerations
 - **Admin Commands:** Comprehensive command systems for easy server management and configuration
 - **GUI Interfaces:** User-friendly graphical interfaces for easy management and configuration
 
@@ -37,7 +37,7 @@ Each plugin is built with performance in mind and offers extensive configuration
 These plugins are compatible with major Minecraft server platforms:
 
 - **Server Software:** `Spigot`, `Paper`, `Purpur`, `CraftBukkit`
-- **Minecraft Versions:** `1.19+`, `1.20+`, `1.21+` (also compatible with higher versions)
+- **Minecraft Versions:** `1.21.1`, `1.21.2`, `1.21.3`, `1.21.4`, `1.21.5`, `1.21.6` (also compatible with higher versions)
 - **Java Requirements:** `Java 17+`
 
 ### **Plugin Compatibility**
@@ -80,7 +80,7 @@ All plugins are designed to work seamlessly together and with popular server plu
 ## **Getting Started**
 
 ### **Prerequisites**
-- Minecraft server 1.19 or higher (Spigot, Paper, or compatible fork)
+- Minecraft server 1.21 or higher (Spigot, Paper, or compatible fork)
 - Java 17 or newer (Java 21 recommended)
 - (Optional) Vault for economy features, LuckPerms or PermissionsEx for permissions, MySQL for advanced database support
 
