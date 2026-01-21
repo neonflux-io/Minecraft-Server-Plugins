@@ -342,6 +342,80 @@ A comprehensive enchantment system that extends vanilla Minecraft enchanting cap
 
 **Note:** Custom enchantments use a sophisticated trigger system that responds to different events (combat, interaction, projectile hits) and include built-in cooldowns to maintain game balance. All effects are configurable through the plugin's config.yml file.
 
+## **NPC Item Pickup and Drop**
+
+A dynamic Citizens2 enhancement plugin that brings NPCs to life by allowing them to interact with the world through item collection and strategic behaviors. NPCs can automatically detect, move towards, and collect dropped items, storing them in virtual inventories that persist until death. The plugin also features an advanced "thief mode" where designated NPCs can steal items from containers, adding unique gameplay mechanics to your server.
+
+### Core Features:
+- **Intelligent Item Detection:** NPCs automatically scan their surroundings for dropped items within configurable radius
+- **Smart Movement System:** NPCs pathfind and move towards items they want to collect, with realistic movement speeds
+- **Virtual Inventory Management:** Each NPC maintains a persistent inventory that can hold up to 256 items with intelligent stacking
+- **Death Drop Mechanics:** When NPCs die, they drop their collected items with configurable scatter patterns and drop chances
+- **Advanced Filtering System:** Whitelist/blacklist controls for determining which items NPCs can collect
+- **Thief Mode:** Specialized NPCs can steal items directly from chests, barrels, and other containers
+- **Per-NPC Configuration:** Individual NPCs can have pickup disabled or thief mode enabled independently
+- **Performance Optimized:** Efficient scanning algorithms with configurable tick delays to minimize server impact
+- **Sound and Visual Effects:** Pickup sounds and movement animations for immersive gameplay
+- **Admin Management Tools:** Comprehensive command system for monitoring and managing NPC inventories
+
+### Administrative Commands:
+
+| Command | Description |
+|---------|-------------|
+| `/npcpickup reload` | Reload plugin configuration and restart tasks |
+| `/npcpickup toggle` | Enable/disable all plugin functionality globally |
+| `/npcpickup status` | Display plugin status, statistics, and configuration summary |
+| `/npcpickup info [npc_name]` | Show detailed inventory information for nearby NPC or specified name |
+| `/npcpickup clear <npc_name\|all>` | Clear inventory of specific NPC or all NPCs |
+| `/npcpickup disable <npc_id\|npc_name>` | Disable item pickup for specific NPC |
+| `/npcpickup enable <npc_id\|npc_name>` | Re-enable item pickup for specific NPC |
+| `/npcpickup thief <npc_id\|npc_name>` | Enable thief mode for specific NPC |
+| `/npcpickup unthief <npc_id\|npc_name>` | Disable thief mode for specific NPC |
+
+### Usage Examples:
+
+#### Basic Setup:
+```yaml
+# Make NPCs collect valuable items only
+item_filter:
+  use_whitelist: true
+  whitelist:
+    - "DIAMOND"
+    - "GOLD_INGOT"
+    - "EMERALD"
+```
+
+#### Thief Configuration:
+```yaml
+# Enable thief mode with moderate stealing
+thief_mode:
+  enabled: true
+  items_per_tick: 2
+  theft_delay: 20
+```
+
+#### Performance Tuning:
+```yaml
+# Optimize for servers with many NPCs
+pickup:
+  radius: 3.0
+  delay: 40  # Check every 2 seconds
+  max_items: 128
+```
+
+### Command Examples:
+```
+/npcpickup info "Town Guard"        # Check specific NPC's inventory
+/npcpickup thief "Sneaky Pete"      # Make NPC steal from chests
+/npcpickup clear all                # Clear all NPC inventories
+/npcpickup disable 42               # Stop NPC ID 42 from picking up items
+```
+
+**Requirements:** Citizens2 plugin, Minecraft 1.16+, Java 8+  
+**Permissions:** `npcpickup.admin` (default: OP) for all administrative commands  
+
+**Note:** All NPC inventories are stored in memory and reset on server restart. NPCs will only move towards items if they have pathfinding capabilities enabled in Citizens2 configuration.
+
 ## **License**
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
