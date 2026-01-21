@@ -244,9 +244,9 @@ The following screenshots demonstrate the core functionality of each plugin, inc
 
 <table>
   <tr>
-    <th>Plugin - Achievement</th>
-    <th>Plugin - Achievement</th>
-    <th>Plugin - Crusher</th>
+    <th>Plugin - Advanced Achievement</th>
+    <th>Plugin - Advanced Achievement</th>
+    <th>Plugin - Piston Crusher</th>
   </tr>
   <tr>
     <td><img src="img/img_v1.0.1-mcplugin-progress.png" alt="Achievement Progress" width="300"></td>
@@ -256,7 +256,7 @@ The following screenshots demonstrate the core functionality of each plugin, inc
   <tr>
     <th>Plugin - Railboost</th>
     <th>Plugin - Railboost</th>
-    <th>Plugin - Enchantments</th>
+    <th>Plugin - Super Enchantments</th>
   </tr>
   <tr>
     <td><img src="img/img_v1.0.1-mcplugin-magnet.png" alt="Magnet Feature" width="300"></td>
