@@ -242,10 +242,12 @@ The following screenshots demonstrate the core functionality of each plugin, inc
 
 The following screenshots demonstrate the core functionality of each plugin, including the achievement system interface, automation, and enhanced minecart features.
 
-| Plugin - Advanced Achievement | Plugin - Advanced Achievement  | Plugin - Piston Crusher |
+| Plugin - Achievement | Plugin - Achievement  | Plugin - Crusher |
 |:----------------------------:|:----------------------------:|:----------------------:|
 | [<img src="img/img_v1.0.1-mcplugin-progress.png" alt="Plugin - Achievement Progress" style="width: 300px; height: 169px; object-fit: cover;">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-progress.png) | [<img src="img/img_v1.0.1-mcplugin-unlocked.png" alt="Plugin - Achievement Unlocked" style="width: 300px; height: 169px; object-fit: cover;">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-unlocked.png) | [<img src="img/img_v1.0.1-mcplugin-crusher.png" alt="Plugin - Piston Crusher" style="width: 300px; height: 169px; object-fit: cover;">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-crusher.png) |
 
-| Plugin - Railboost | Plugin - Railboost | Plugin - Super Enchantments |
+<br>
+
+| Plugin - Railboost | Plugin - Railboost | Plugin - Enchantments |
 |:----------------------------:|:----------------------------:|:----------------------:|
 | [<img src="img/img_v1.0.1-mcplugin-magnet.png" alt="Plugin - Magnet Feature" style="width: 300px; height: 169px; object-fit: cover;">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-magnet.png) | [<img src="img/img_v1.0.1-mcplugin-effect.png" alt="Plugin - Particle Effect" style="width: 300px; height: 169px; object-fit: cover;">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-effect.png) | [<img src="img/img_v1.0.1-mcplugin-enchantment.png" alt="Plugin - Super Enchantment" style="width: 300px; height: 169px; object-fit: cover;">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-enchantment.png) |
