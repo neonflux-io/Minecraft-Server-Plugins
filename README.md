@@ -284,10 +284,10 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 The following screenshots demonstrate the core functionality of each plugin, including the achievement system interface, automation, and enhanced minecart features.
 
-| MC Plugin - Achievement Progress | MC Plugin - Achievement Unlocked | MC Plugin - Piston Crusher |
+| Plugin - Advanced Achievement | Plugin - Advanced Achievement  | Plugin - Piston Crusher |
 |:----------------------------:|:----------------------------:|:----------------------:|
 | <img src="img/img_v1.0.0-mcplugin-progress.png" alt="Plugin - Achievement Progress" width="300px"> | <img src="img/img_v1.0.0-mcplugin-unlocked.png" alt="Plugin - Achievement Unlocked" width="300px"> | <img src="img/img_v1.0.0-mcplugin-crusher.png" alt="Plugin - Piston Crusher" width="300px"> |
 
-| MC Plugin - Railboost Magnet | MC Plugin - Railboost Effect | MC Plugin - Super Enchantment |
+| Plugin - Railboost | Plugin - Railboost | Plugin - Super Enchantments |
 |:----------------------------:|:----------------------------:|:----------------------:|
 | <img src="img/img_v1.0.0-mcplugin-magnet.png" alt="Plugin - Magnet Feature" width="300px"> | <img src="img/img_v1.0.0-mcplugin-effect.png" alt="Plugin - Particle Effect" width="300px"> | <img src="img/img_v1.0.0-mcplugin-enchantment.png" alt="Plugin - Super Enchantment" width="300px"> |
