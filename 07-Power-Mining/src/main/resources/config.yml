@@ -1,0 +1,104 @@
+mounted-mining:
+  enabled: true
+  radius-x: 1
+  radius-y: 1
+  radius-z: 1
+  mining-interval: 5
+  y-offset: 1
+
+magnet-hopper:
+  enabled: true
+  default-radius: 8
+  max-radius: 32
+  attraction-interval: 5
+  attraction-speed: 0.5
+  particles:
+    enabled: true
+    type: SOUL_FIRE_FLAME
+    count: 3
+    interval: 10
+
+ore-scanner-bell:
+  enabled: true
+  default-radius: 16
+  max-radius: 64
+  default-duration: 60
+  cooldown: 30
+  ore-types:
+    - COAL_ORE
+    - DEEPSLATE_COAL_ORE
+    - IRON_ORE
+    - DEEPSLATE_IRON_ORE
+    - COPPER_ORE
+    - DEEPSLATE_COPPER_ORE
+    - GOLD_ORE
+    - DEEPSLATE_GOLD_ORE
+    - REDSTONE_ORE
+    - DEEPSLATE_REDSTONE_ORE
+    - EMERALD_ORE
+    - DEEPSLATE_EMERALD_ORE
+    - LAPIS_ORE
+    - DEEPSLATE_LAPIS_ORE
+    - DIAMOND_ORE
+    - DEEPSLATE_DIAMOND_ORE
+    - NETHER_GOLD_ORE
+    - NETHER_QUARTZ_ORE
+    - ANCIENT_DEBRIS
+
+miners-helmet:
+  enabled: true
+
+escape-rope:
+  enabled: true
+
+cave-compass:
+  enabled: true
+  search-radius: 5000
+
+auto-smelter-pickaxe:
+  enabled: true
+
+miners-goggles:
+  enabled: true
+  default-radius: 10
+  min-radius: 5
+  max-radius: 20
+  highlight-interval: 20
+  highlight-color: GOLD
+  ore-types:
+    - COAL_ORE
+    - DEEPSLATE_COAL_ORE
+    - IRON_ORE
+    - DEEPSLATE_IRON_ORE
+    - COPPER_ORE
+    - DEEPSLATE_COPPER_ORE
+    - GOLD_ORE
+    - DEEPSLATE_GOLD_ORE
+    - REDSTONE_ORE
+    - DEEPSLATE_REDSTONE_ORE
+    - EMERALD_ORE
+    - DEEPSLATE_EMERALD_ORE
+    - LAPIS_ORE
+    - DEEPSLATE_LAPIS_ORE
+    - DIAMOND_ORE
+    - DEEPSLATE_DIAMOND_ORE
+    - NETHER_GOLD_ORE
+    - NETHER_QUARTZ_ORE
+    - ANCIENT_DEBRIS
+
+messages:
+  magnet-hopper-given: "<green>You received a <gold>Magnet Hopper</gold> with radius <yellow>{radius}</yellow>!</green>"
+  ore-scanner-bell-given: "<green>You received an <gold>Ore Scanner Bell</gold> with radius <yellow>{radius}</yellow>!</green>"
+  ore-scanner-cooldown: "<red>Ore Scanner is on cooldown! <yellow>{seconds}</yellow> seconds remaining.</red>"
+  ore-scanner-found: "<green>Found <yellow>{count}</yellow> ores nearby!</green>"
+  ore-scanner-none-found: "<yellow>No ores found in range.</yellow>"
+  miners-helmet-given: "<green>You received a <gold>Miner's Helmet</gold>! Wear it for night vision.</green>"
+  escape-rope-given: "<green>You received an <light_purple>Escape Rope</light_purple>! Right-click a block to set return point.</green>"
+  escape-rope-set: "<green>Return point set! Right-click in the air to teleport back.</green>"
+  escape-rope-teleport: "<green>Whoosh! You've been teleported back to your return point!</green>"
+  escape-rope-no-point: "<red>No return point set! Right-click a block first.</red>"
+  escape-rope-invalid: "<red>Return point is no longer valid!</red>"
+  cave-compass-given: "<green>You received a <light_purple>Cave Compass</light_purple>! Shift+Right-click to cycle targets.</green>"
+  smelter-pickaxe-given: "<green>You received a <red>Smelter's Pickaxe</red>! Ores are auto-smelted when mined.</green>"
+  miners-goggles-given: "<green>You received <gold>Miner's Goggles</gold>! Ores within <yellow>{radius}</yellow> blocks will glow when worn.</green>"
+  no-permission: "<red>You don't have permission to do that!</red>"
