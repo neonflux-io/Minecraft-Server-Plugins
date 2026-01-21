@@ -50,15 +50,32 @@ All plugins are designed to work seamlessly together and with popular server plu
 ## **Table of Contents**
 
 1. [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation Steps](#installation-steps)
+    - [First Launch & Configuration](#first-launch--configuration)
+    - [Verifying Installation](#verifying-installation)
 2. [Advanced Achievements](#advanced-achievements)
-   - [Administrative & Player Commands](#administrative--player-commands)
+    - [Core Features](#core-features-advanced-achievements)
+    - [Administrative & Player Commands](#administrative--player-commands)
+    - [Command Aliases](#command-aliases-advanced-achievements)
 3. [Piston Crusher](#piston-crusher)
-   - [How It Works](#how-it-works)
-   - [Administrative Commands](#administrative-commands)
+    - [Core Features](#core-features-piston-crusher)
+    - [How It Works](#how-it-works)
+    - [Administrative Commands](#administrative-commands)
+    - [Important Notes](#important-notes-piston-crusher)
 4. [Rail Boost](#rail-boost)
-   - [Player Commands](#player-commands)
+    - [Core Features](#core-features-rail-boost)
+    - [Player Commands](#player-commands)
+    - [Command Aliases](#command-aliases-rail-boost)
+    - [Prerequisites for Commands](#prerequisites-for-commands-rail-boost)
 5. [Super Enchantments](#super-enchantments)
-   - [Player Commands](#player-commands)
+    - [Core Features](#core-features-super-enchantments)
+    - [How It Works](#how-it-works-1)
+    - [Supported Enchantments](#supported-enchantments)
+    - [Player Commands](#player-commands-1)
+    - [Usage Examples](#usage-examples-super-enchantments)
+    - [Command Requirements](#command-requirements-super-enchantments)
+    - [Error Handling](#error-handling-super-enchantments)
 6. [License](#license)
 7. [Screenshots](#screenshots)
 
@@ -91,7 +108,7 @@ For plugin-specific commands and advanced configuration, see the sections below.
 
 A comprehensive achievement system that tracks player progress across multiple categories and provides customizable rewards. Features include progress tracking, database integration, and an intuitive GUI for players to view their achievements.
 
-**Core Features:**
+### Core Features (Advanced Achievements):
 - **Progress Tracking:** Real-time tracking of player progress with percentage completion
 - **Custom Rewards:** Configure economy rewards, items, commands, and experience points
 - **Database Integration:** Persistent storage with MySQL and SQLite support
@@ -99,7 +116,7 @@ A comprehensive achievement system that tracks player progress across multiple c
 - **API Integration:** Developer API for creating custom achievement triggers
 - **Message Customization:** Fully customizable achievement notifications and messages
 
-**Administrative & Player Commands:**
+### Administrative & Player Commands:
 
 | Command | Description | Usage Example |
 |---------|-------------|---------------|
@@ -117,7 +134,7 @@ A comprehensive achievement system that tracks player progress across multiple c
 | `/achievementadmin gui` | Opens the main achievements GUI interface for browsing and tracking progress | `/achievementadmin gui` |
 | `/achievementadmin help` | Shows help information and available commands for the achievement system | `/achievementadmin help` |
 
-**Command Aliases:**
+### Command Aliases (Advanced Achievements):
 - `/achievementadmin` can be used as `/achadmin` or `/ach` (all subcommands must be used as arguments, e.g. `/ach list`, `/ach gui`, etc.)
 - There is no standalone `/ach` command; all commands are subcommands of `/achievementadmin` or its aliases.
 - Most player commands support partial matching for achievement IDs
@@ -126,21 +143,21 @@ A comprehensive achievement system that tracks player progress across multiple c
 
 An automation plugin that allows pistons to crush specific blocks into multiple items, creating efficient resource processing systems. Perfect for industrial-style servers and automated farms.
 
-**Core Features:**
+### Core Features (Piston Crusher):
 - **Block Whitelist:** Configure which blocks can be crushed by pistons
 - **Output Multiplier:** Adjust how many items are produced when blocks are crushed
 - **Crusher Block Selection:** Choose which block type acts as the crusher mechanism
 - **Admin Controls:** Easy configuration through in-game commands
 - **Performance Optimized:** Efficient event handling for minimal server impact
 
-**How It Works:**
+### How It Works:
 1. Configure which blocks can be crushed using the whitelist system
 2. Place the configured crusher block (default: Polished Andesite) in your setup
 3. Only the block directly in front of the crusher block (in the direction the crusher is facing) will be broken when activated
 4. The broken block drops as a collectible item with the configured output multiplier
 5. Perfect for creating automated mining systems and resource processing farms
 
-**Administrative Commands:**
+### Administrative Commands:
 
 | Command | Description | Usage Example |
 |---------|-------------|---------------|
@@ -152,7 +169,7 @@ An automation plugin that allows pistons to crush specific blocks into multiple 
 | `/pistoncrusher crusherblock <material>` | Sets which block type acts as the crusher mechanism | `/pistoncrusher crusherblock POLISHED_ANDESITE` |
 | `/pistoncrusher crusherblock` | Displays the current crusher block type and usage instructions | `/pistoncrusher crusherblock` |
 
-**Important Notes:**
+### Important Notes (Piston Crusher):
 - Material names must be valid Minecraft material identifiers (e.g., COBBLESTONE, STONE, IRON_ORE)
 - The multiplier determines how many items are produced when a block is crushed
 - The crusher block is the block that blocks must be pushed into for crushing to occur
@@ -162,7 +179,7 @@ An automation plugin that allows pistons to crush specific blocks into multiple 
 
 A comprehensive minecart enhancement plugin that transforms basic minecarts into powerful transportation and utility vehicles with speed control, storage, and automation features.
 
-**Core Features:**
+### Core Features (Rail Boost):
 - **Variable Speed Control:** 6 different speed levels from 0.25x to 4.0x normal speed
 - **Auto-Pickup System:** Configurable radius for automatic item collection while traveling
 - **Built-in Storage:** Each minecart can carry items with inventory management
@@ -173,7 +190,7 @@ A comprehensive minecart enhancement plugin that transforms basic minecarts into
 - **Auto-Sit Feature:** Automatic boarding system for convenient transportation
 - **Item Blacklist:** Configure which items should not be automatically collected
 
-**Player Commands:**
+### Player Commands:
 
 | Command | Description | Usage Example |
 |---------|-------------|---------------|
@@ -194,12 +211,12 @@ A comprehensive minecart enhancement plugin that transforms basic minecarts into
 | `/railboost info` | Displays complete current configuration and settings for the minecart | `/railboost info` |
 | `/railboost help` | Shows all available commands with brief descriptions | `/railboost help` |
 
-**Command Aliases:**
+### Command Aliases (Rail Boost):
 - `/railboost` can be shortened to `/rb`
 - Boolean values accept: `true/false`, `on/off`, `1/0`
 - The `configuration` command is required to activate minecarts before other features work
 
-**Prerequisites for Commands:**
+### Prerequisites for Commands (Rail Boost):
 - Most commands require the player to be sitting in a minecart
 - The minecart must be activated using `/railboost configuration true`
 - Some commands like `blacklist list` can be used without being in a minecart
@@ -208,7 +225,7 @@ A comprehensive minecart enhancement plugin that transforms basic minecarts into
 
 An advanced enchantment system that allows players to apply enchantments beyond vanilla Minecraft limits, supporting enchantment levels from 1 to 255. Perfect for servers that want to offer enhanced gameplay with powerful equipment customization.
 
-**Core Features:**
+### Core Features (Super Enchantments):
 - **Extended Enchantment Levels:** Apply any enchantment with levels from 1 to 255, far beyond vanilla limits
 - **Smart Item Compatibility:** Automatic validation ensures enchantments can only be applied to compatible items
 - **Comprehensive Enchantment Support:** Works with all vanilla enchantments including combat, mining, armor, and utility enchantments
@@ -217,14 +234,14 @@ An advanced enchantment system that allows players to apply enchantments beyond 
 - **User-Friendly Interface:** Clear error messages and confirmation feedback for all operations
 - **Permission-Based Access:** Configurable permissions for different user groups and administrative control
 
-**How It Works:**
+### How It Works:
 1. Hold any enchantable item in your main hand (sword, pickaxe, armor, etc.)
 2. Use the `/superenchant` command with the desired enchantment name
 3. Optionally specify a level (1-255), or let the system use the maximum vanilla level
 4. The enchantment is applied instantly with visual confirmation
 5. View all available enchantments for your current item with `/enchantlist`
 
-**Supported Enchantments:**
+### Supported Enchantments:
 The plugin supports all vanilla Minecraft enchantments with extended levels:
 - **Combat:** Sharpness, Smite, Bane of Arthropods, Knockback, Fire Aspect, Looting, Sweeping Edge
 - **Mining:** Efficiency, Fortune, Silk Touch, Unbreaking 
@@ -234,7 +251,7 @@ The plugin supports all vanilla Minecraft enchantments with extended levels:
 - **Utility:** Respiration, Depth Strider, Aqua Affinity, Feather Falling, Frost Walker, Soul Speed
 - **Special:** Mending, Curse of Vanishing, Curse of Binding, Swift Sneak, Luck of the Sea, Lure
 
-**Player Commands:**
+### Player Commands:
 
 | Command | Description | Usage Example |
 |---------|-------------|---------------|
@@ -246,7 +263,7 @@ The plugin supports all vanilla Minecraft enchantments with extended levels:
 | `/elist` | Short alias for enchantlist command | `/elist` |
 | `/el` | Shortest alias for enchantlist command | `/el` |
 
-**Usage Examples:**
+### Usage Examples (Super Enchantments):
 ```yaml
 # Apply Sharpness level 15 to your sword
 /superenchant sharpness 15
@@ -264,13 +281,13 @@ The plugin supports all vanilla Minecraft enchantments with extended levels:
 /senchant protection 25
 ```
 
-**Command Requirements:**
+### Command Requirements (Super Enchantments):
 - Player must be holding an enchantable item in their main hand
 - Enchantment must be compatible with the held item (e.g., Sharpness only works on swords)
 - Level must be between 1 and 255 (if specified)
 - Player must have the appropriate permissions
 
-**Error Handling:**
+### Error Handling (Super Enchantments):
 - Clear feedback when no item is held or item cannot be enchanted
 - Validation prevents incompatible enchantment/item combinations
 - Level range checking with helpful error messages
@@ -286,8 +303,8 @@ The following screenshots demonstrate the core functionality of each plugin, inc
 
 | Plugin - Advanced Achievement | Plugin - Advanced Achievement  | Plugin - Piston Crusher |
 |:----------------------------:|:----------------------------:|:----------------------:|
-| <img src="img/img_v1.0.0-mcplugin-progress.png" alt="Plugin - Achievement Progress" width="300px"> | <img src="img/img_v1.0.0-mcplugin-unlocked.png" alt="Plugin - Achievement Unlocked" width="300px"> | <img src="img/img_v1.0.0-mcplugin-crusher.png" alt="Plugin - Piston Crusher" width="300px"> |
+| <img src="img/img_v1.0.0-mcplugin-progress.png" alt="Plugin - Achievement Progress" width="300px" height="169px"> | <img src="img/img_v1.0.0-mcplugin-unlocked.png" alt="Plugin - Achievement Unlocked" width="300px" height="169px"> | <img src="img/img_v1.0.0-mcplugin-crusher.png" alt="Plugin - Piston Crusher" width="300px" height="169px"> |
 
 | Plugin - Railboost | Plugin - Railboost | Plugin - Super Enchantments |
 |:----------------------------:|:----------------------------:|:----------------------:|
-| <img src="img/img_v1.0.0-mcplugin-magnet.png" alt="Plugin - Magnet Feature" width="300px"> | <img src="img/img_v1.0.0-mcplugin-effect.png" alt="Plugin - Particle Effect" width="300px"> | <img src="img/img_v1.0.0-mcplugin-enchantment.png" alt="Plugin - Super Enchantment" width="300px"> |
+| <img src="img/img_v1.0.0-mcplugin-magnet.png" alt="Plugin - Magnet Feature" width="300px" height="169px"> | <img src="img/img_v1.0.0-mcplugin-effect.png" alt="Plugin - Particle Effect" width="300px" height="169px"> | <img src="img/img_v1.0.0-mcplugin-enchantment.png" alt="Plugin - Super Enchantment" width="300px" height="169px"> |
