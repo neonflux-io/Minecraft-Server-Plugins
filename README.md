@@ -18,6 +18,7 @@ Each plugin is built with performance in mind and offers extensive configuration
 
 - **Advanced Achievements:** Comprehensive achievement system with custom rewards, progress tracking, and database integration
 - **Area Rewind:** Advanced area protection and backup system with undo/redo functionality, automatic backups, and GUI management
+- **Map Revealer:** Automatically reveal entire maps with customizable color schemes and locking functionality
 - **Piston Crusher:** Automated block crushing system using pistons with configurable materials and multipliers  
 - **Rail Boost:** Enhanced minecart system with speed control, auto-pickup, storage, and advanced transportation features
 - **Super Enchantments:** Advanced enchantment system allowing enchantments beyond vanilla limits with level 1-255 support
@@ -37,7 +38,7 @@ Each plugin is built with performance in mind and offers extensive configuration
 These plugins are compatible with major Minecraft server platforms:
 
 - **Server Software:** `Spigot`, `Paper`, `Purpur`, `CraftBukkit`
-- **Minecraft Versions:** `1.21.3`, `1.21.4`, `1.21.5`, `1.21.6`, `1.21.7`, `1.21.8` (also compatible with higher versions)
+- **Minecraft Versions:** `1.21.5`, `1.21.6`, `1.21.7`, `1.21.8`, `1.21.9`, `1.21.10` (also compatible with higher versions)
 - **Java Requirements:** `Java 17+`
 
 ### **Plugin Compatibility**
@@ -64,21 +65,24 @@ All plugins are designed to work seamlessly together and with popular server plu
     - [Getting Started](#getting-started-1)
     - [Player Commands](#player-commands)
     - [Administrative Commands](#administrative-commands)
-4. [Piston Crusher](#piston-crusher)
+4. [Map Revealer](#map-revealer)
     - [Core Features](#core-features-2)
+    - [Player Commands](#player-commands-1)
+5. [Piston Crusher](#piston-crusher)
+    - [Core Features](#core-features-3)
     - [Example Setup](#example-setup)
     - [Administrative Commands](#administrative-commands-1)
-5. [Rail Boost](#rail-boost)
-    - [Core Features](#core-features-3)
-    - [Player Commands](#player-commands-1)
-6. [Super Enchantments](#super-enchantments)
+6. [Rail Boost](#rail-boost)
     - [Core Features](#core-features-4)
+    - [Player Commands](#player-commands-2)
+7. [Super Enchantments](#super-enchantments)
+    - [Core Features](#core-features-5)
     - [Custom Enchantments](#custom-enchantments)
     - [Enchantment Compatibility](#enchantment-compatibility)
-    - [Player Commands](#player-commands-2)
+    - [Player Commands](#player-commands-3)
     - [Usage Examples](#usage-examples)
-7. [License](#license)
-8. [Screenshots](#screenshots)
+8. [License](#license)
+9. [Screenshots](#screenshots)
 
 ## **Getting Started**
 
@@ -211,6 +215,34 @@ A comprehensive area protection and backup system that allows players to create 
 **Aliases:** `/ar`, `/arearewind`  
 **Tool:** Wooden Hoe for area selection  
 **Command Aliases:** Most commands support shortened versions (e.g., `perm` for `permission`, `tp` for `teleport`, `compare` for `diff`)
+
+## **Map Revealer**
+
+A utility plugin that allows players to instantly reveal entire maps without having to explore every chunk. Features multiple color schemes for thematic map appearances and automatic map locking to preserve custom reveals.
+
+### Core Features:
+- **Instant Map Reveal:** Completely reveal any map in your hand with a single command
+- **Color Schemes:** 9 different color schemes including withered, ender, mystic, nether, sepia, grayscale, inverted, ocean, and autumn
+- **Depth Rendering:** Optional Y-level rendering for cave maps or surface-only reveals
+- **Map Locking:** Automatically locks maps with custom schemes to prevent Minecraft's automatic updates from overwriting them
+- **Performance Optimized:** Asynchronous processing to avoid server lag during large map reveals
+
+### Player Commands:
+
+| Command | Description |
+|---------|-------------|
+| `/revealmap` | Reveal the map in your hand (surface, normal colors) |
+| `/revealmap [depth]` | Reveal at specific Y level (e.g., 64 for sea level) |
+| `/revealmap [depth] [scheme]` | Reveal with custom color scheme (e.g., withered, ender) |
+| `/revealmap lock` | Lock the map to prevent automatic updates |
+| `/revealmap schemes` | List all available color schemes |
+| `/revealmap help` | Show help information |
+
+**Aliases:** `/mapreveal`, `/mr`  
+**Examples:**  
+- `/revealmap` - Basic surface reveal  
+- `/revealmap 64 withered` - Reveal caves at Y=64 with withered colors  
+- `/revealmap nether` - Surface reveal with nether color scheme  
 
 ## **Piston Crusher**
 
