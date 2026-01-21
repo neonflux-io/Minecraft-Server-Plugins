@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="efc80b50-565e-49e2-a111-ede59afa1b94" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/Minecraft-Server-Plugins.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Advanced-Achievements/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Rail-Boost/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Super-Enchantments/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/AdvancedAchievements.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/AdvancedAchievements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/api/AchievementAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/api/AchievementAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/commands/AchievementAdminCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/commands/AchievementAdminCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/commands/AchievementCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/commands/AchievementCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/database/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/database/DatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/gui/AchievementGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/gui/AchievementGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/managers/AchievementManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/managers/AchievementManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/managers/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/managers/ConfigManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/managers/ProgressManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/managers/ProgressManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/models/Achievement.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/src/main/java/com/example/advancedachievements/models/Achievement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/src/main/resources/achievements.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/src/main/resources/achievements.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/src/main/resources/messages.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/src/main/resources/messages.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/Advanced-Achievements-1.0.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/achievements.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/achievements.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/AdvancedAchievements.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/AdvancedAchievements.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/api/AchievementAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/api/AchievementAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/commands/AchievementAdminCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/commands/AchievementAdminCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/commands/AchievementCommand$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/commands/AchievementCommand$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/commands/AchievementCommand$CreationSession.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/commands/AchievementCommand$CreationSession.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/commands/AchievementCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/commands/AchievementCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/database/DatabaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/database/DatabaseManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/gui/AchievementGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/gui/AchievementGUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/gui/AchievementGUI$GuiSession.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/gui/AchievementGUI$GuiSession.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/gui/AchievementGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/gui/AchievementGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/managers/AchievementManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/managers/AchievementManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/managers/ConfigManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/managers/ConfigManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/managers/ProgressManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/managers/ProgressManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/models/Achievement.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/com/example/advancedachievements/models/Achievement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/messages.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/messages.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/classes/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Advanced-Achievements/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../Advanced-Achievements/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PistonCrusherCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/PistonCrusherCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PistonCrusherListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/PistonCrusherListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PistonCrusherPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/PistonCrusherPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Piston-Crusher-1.0.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/PistonCrusherCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/PistonCrusherCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/PistonCrusherListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/PistonCrusherListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/PistonCrusherPlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/PistonCrusherPlugin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Rail-Boost/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Rail-Boost/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Rail-Boost/src/main/java/de/railboost/RailBoostPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Rail-Boost/src/main/java/de/railboost/RailBoostPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Rail-Boost/target/Rail-Boost-1.0.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Rail-Boost/target/classes/de/railboost/RailBoostPlugin$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Rail-Boost/target/classes/de/railboost/RailBoostPlugin$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Rail-Boost/target/classes/de/railboost/RailBoostPlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Rail-Boost/target/classes/de/railboost/RailBoostPlugin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Rail-Boost/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../Rail-Boost/target/classes/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Rail-Boost/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Rail-Boost/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Rail-Boost/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../Rail-Boost/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Super-Enchantments/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Super-Enchantments/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Super-Enchantments/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Super-Enchantments/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Super-Enchantments/src/main/java/org/example/util/EnchantmentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Super-Enchantments/src/main/java/org/example/util/EnchantmentManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Super-Enchantments/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../Super-Enchantments/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Super-Enchantments/target/Super-Enchantments-1.0.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Super-Enchantments/target/classes/org/example/util/EnchantmentManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Super-Enchantments/target/classes/org/example/util/EnchantmentManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Super-Enchantments/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../Super-Enchantments/target/classes/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Super-Enchantments/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Super-Enchantments/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Super-Enchantments/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../Super-Enchantments/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Super-Enchantments/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../Super-Enchantments/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2yxfz6zy0WlK1oR5GqkQJ7TPG0I" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.Piston Crusher [package].executor": "Run",
+    "Maven.Piston-Crusher [package].executor": "Run",
+    "Maven.PistonCrusher [package].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/bernd/Documents/GitHub/Minecraft-Server-Plugins/Piston-Crusher",
+    "onboarding.tips.debug.path": "C:/Users/bernd/Desktop/PistonCrusher/src/main/java/org/example/Main.java"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="efc80b50-565e-49e2-a111-ede59afa1b94" name="Changes" comment="" />
+      <created>1750781406309</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1750781406309</updated>
+    </task>
+    <servers />
+  </component>
+</project>
