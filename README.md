@@ -242,11 +242,25 @@ The following screenshots demonstrate the core functionality of each plugin, inc
 
 The following screenshots demonstrate the core functionality of each plugin, including the achievement system interface, automation, and enhanced minecart features.
 
-| Plugin - Achievement | Plugin - Achievement  | Plugin - Crusher |
-|:----------------------------:|:----------------------------:|:----------------------:|
-| [<img src="img/img_v1.0.1-mcplugin-progress.png" alt="Plugin - Achievement Progress" width="300">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-progress.png) | [<img src="img/img_v1.0.1-mcplugin-unlocked.png" alt="Plugin - Achievement Unlocked" width="300">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-unlocked.png) | [<img src="img/img_v1.0.1-mcplugin-crusher.png" alt="Plugin - Piston Crusher" width="300">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-crusher.png) |
-
-| Plugin - Railboost | Plugin - Railboost | Plugin - Enchantments |
-|:----------------------------:|:----------------------------:|:----------------------:|
-| [<img src="img/img_v1.0.1-mcplugin-magnet.png" alt="Plugin - Magnet Feature" width="300">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-magnet.png) | [<img src="img/img_v1.0.1-mcplugin-effect.png" alt="Plugin - Particle Effect" width="300">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-effect.png) | [<img src="img/img_v1.0.1-mcplugin-enchantment.png" alt="Plugin - Super Enchantment" width="300">](https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-enchantment.png) |
-
+<table>
+  <tr>
+    <th>Plugin - Achievement</th>
+    <th>Plugin - Achievement</th>
+    <th>Plugin - Crusher</th>
+  </tr>
+  <tr>
+    <td><img src="img/img_v1.0.1-mcplugin-progress.png" alt="Achievement Progress" width="300"></td>
+    <td><img src="img/img_v1.0.1-mcplugin-unlocked.png" alt="Achievement Unlocked" width="300"></td>
+    <td><img src="img/img_v1.0.1-mcplugin-crusher.png" alt="Piston Crusher" width="300"></td>
+  </tr>
+  <tr>
+    <th>Plugin - Railboost</th>
+    <th>Plugin - Railboost</th>
+    <th>Plugin - Enchantments</th>
+  </tr>
+  <tr>
+    <td><img src="img/img_v1.0.1-mcplugin-magnet.png" alt="Magnet Feature" width="300"></td>
+    <td><img src="img/img_v1.0.1-mcplugin-effect.png" alt="Particle Effect" width="300"></td>
+    <td><img src="img/img_v1.0.1-mcplugin-enchantment.png" alt="Super Enchantment" width="300"></td>
+  </tr>
+</table>
