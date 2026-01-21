@@ -37,7 +37,7 @@ Each plugin is built with performance in mind and offers extensive configuration
 These plugins are compatible with major Minecraft server platforms:
 
 - **Server Software:** `Spigot`, `Paper`, `Purpur`, `CraftBukkit`
-- **Minecraft Versions:** `1.21.1`, `1.21.2`, `1.21.3`, `1.21.4`, `1.21.5`, `1.21.6` (also compatible with higher versions)
+- **Minecraft Versions:** `1.21.3`, `1.21.4`, `1.21.5`, `1.21.6`, `1.21.7`, `1.21.8` (also compatible with higher versions)
 - **Java Requirements:** `Java 17+`
 
 ### **Plugin Compatibility**
