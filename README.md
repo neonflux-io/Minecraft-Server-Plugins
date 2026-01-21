@@ -60,7 +60,6 @@ All plugins are designed to work seamlessly together and with popular server plu
     - [Command Aliases](#command-aliases-advanced-achievements)
 3. [Piston Crusher](#piston-crusher)
     - [Core Features](#core-features-piston-crusher)
-    - [How It Works](#how-it-works)
     - [Example Setup (Piston Crusher)](#example-setup-piston-crusher)
     - [Administrative Commands](#administrative-commands)
     - [Important Notes](#important-notes-piston-crusher)
@@ -169,24 +168,7 @@ To use the Piston Crusher, build the following structure:
 - **Sticky Piston:** Standard sticky piston
 - **Crusher Block:** The block configured as the crusher (default: Polished Andesite)
 - **Air:** An empty space (must be left open)
-- **Block to be crushed:** Any block on the whitelist (e.g., COBBLESTONE)
-
-**How it works:**
-When you activate the sticky piston, it pushes the crusher block forward. As soon as the front face of the crusher block touches the block to be crushed, that block is instantly broken and drops the configured items.
-
-ASCII diagram (side view):
-
-```
-[P] [C] [ ] [B]
-
-P = Sticky Piston
-C = Crusher Block (e.g., Polished Andesite)
-  = Air (empty block)
-B = Block to be crushed (whitelisted)
-```
-
-- The piston must be oriented so it pushes the crusher block toward the block to be crushed.
-- Only the block directly in front of the crusher block will be broken when the piston extends.
+- **Block to be crushed:** Any block on the whitelist (e.g., cobblestone)
 
 ### Administrative Commands:
 
