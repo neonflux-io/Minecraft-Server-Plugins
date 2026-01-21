@@ -10,13 +10,14 @@
   <a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/releases"><img src="https://img.shields.io/github/v/release/BerndHagen/Minecraft-Server-Plugins?include_prereleases&style=flat-square&color=4CAF50" alt="Latest Release"></a>&nbsp;&nbsp;<a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License"></a>&nbsp;&nbsp;<img src="https://img.shields.io/badge/Java-17+-orange?style=flat-square" alt="Java Version">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Minecraft-1.19+-green?style=flat-square" alt="Minecraft Version">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Platform-Spigot%2FPaper-yellow?style=flat-square" alt="Platform">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square" alt="Status">&nbsp;&nbsp;<a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/issues"><img src="https://img.shields.io/github/issues/BerndHagen/Minecraft-Server-Plugins?style=flat-square&color=orange" alt="Open Issues"></a>
 </p>
 
-This collection provides **open-source Minecraft plugins** designed to add functionality to server gameplay. Each plugin is built with performance in mind and offers configuration options for server administrators.
+This collection provides **open-source Minecraft plugins** designed to add functionality to server gameplay. Originally developed for an own Minecraft server to enhance industrial automation, area protection, and backup capabilities, these plugins are now shared with the community to benefit other server administrators.
 
-Whether you're running a survival server, creative server, or custom game mode, these plugins provide additional features for your server. All plugins are released under the **MIT License**, allowing complete freedom to modify, distribute, and integrate them into your server environment.
+Each plugin is built with performance in mind and offers extensive configuration options for server administrators. Whether you're running a survival server, creative server, or custom game mode, these plugins provide additional features for your server. All plugins are released under the **MIT License**, allowing complete freedom to modify, distribute, and integrate them into your server environment.
 
 ### **Plugin Overview**
 
 - **Advanced Achievements:** Comprehensive achievement system with custom rewards, progress tracking, and database integration
+- **Area Rewind:** Advanced area protection and backup system with undo/redo functionality, automatic backups, and GUI management
 - **Piston Crusher:** Automated block crushing system using pistons with configurable materials and multipliers  
 - **Rail Boost:** Enhanced minecart system with speed control, auto-pickup, storage, and advanced transportation features
 - **Super Enchantments:** Advanced enchantment system allowing enchantments beyond vanilla limits with level 1-255 support
@@ -29,6 +30,7 @@ Whether you're running a survival server, creative server, or custom game mode, 
 - **Database Integration:** Advanced data storage and player progress tracking capabilities
 - **Modern API Support:** Built for Minecraft 1.19+ with backwards compatibility considerations
 - **Admin Commands:** Comprehensive command systems for easy server management and configuration
+- **GUI Interfaces:** User-friendly graphical interfaces for easy management and configuration
 
 ### **Supported Platforms**
 
@@ -57,18 +59,23 @@ All plugins are designed to work seamlessly together and with popular server plu
 2. [Advanced Achievements](#advanced-achievements)
     - [Core Features (Advanced Achievements)](#core-features-advanced-achievements)
     - [Administrative & Player Commands](#administrative--player-commands)
-3. [Piston Crusher](#piston-crusher)
-    - [Core Features (Piston Crusher)](#core-features)
-    - [Example Setup (Piston Crusher)](#example-setup)
-    - [Administrative Commands (Piston Crusher)](#administrative-commands)
-4. [Rail Boost](#rail-boost)
+3. [Area Rewind](#area-rewind)
+    - [Core Features (Area Rewind)](#core-features-area-rewind)
+    - [Getting Started (Area Rewind)](#getting-started-area-rewind)
+    - [Player Commands (Area Rewind)](#player-commands-area-rewind)
+    - [Administrative Commands (Area Rewind)](#administrative-commands-area-rewind)
+4. [Piston Crusher](#piston-crusher)
+    - [Core Features (Piston Crusher)](#core-features-piston-crusher)
+    - [Example Setup (Piston Crusher)](#example-setup-piston-crusher)
+    - [Administrative Commands (Piston Crusher)](#administrative-commands-piston-crusher)
+5. [Rail Boost](#rail-boost)
     - [Core Features (Rail Boost)](#core-features-rail-boost)
-    - [Player Commands (Rail Boost)](#player-commands)
-5. [Super Enchantments](#super-enchantments)
+    - [Player Commands (Rail Boost)](#player-commands-rail-boost)
+6. [Super Enchantments](#super-enchantments)
     - [Core Features (Super Enchantments)](#core-features-super-enchantments)
-    - [Player Commands (Super Enchantments)](#player-commands-1)
-6. [License](#license)
-7. [Screenshots](#screenshots)
+    - [Player Commands (Super Enchantments)](#player-commands-super-enchantments)
+7. [License](#license)
+8. [Screenshots](#screenshots)
 
 ## **Getting Started**
 
@@ -127,17 +134,82 @@ An advanced achievement system that tracks player progress for various task type
 
 **Aliases:** `/achadmin`, `/ach` (all subcommands as above)
 
+## **Area Rewind**
+
+A comprehensive area protection and backup system that allows players to create protected zones with automatic backups, undo/redo functionality, and advanced visualization features. Perfect for servers that need reliable area management with rollback capabilities.
+
+### Core Features (Area Rewind):
+- **Area Protection:** Create protected areas with position selection using wooden hoe tool
+- **Automatic Backups:** Scheduled backups with configurable intervals and retention policies
+- **Manual Backups:** Create backups on demand for important moments
+- **Undo/Redo System:** Full undo/redo functionality for area changes with history tracking
+- **Restoration System:** Restore areas to any previous backup state with preview functionality
+- **Permission System:** Owner and trusted player system with granular permissions
+- **GUI Interface:** User-friendly inventory-based GUI for area and backup management
+- **Visualization:** Particle-based area boundary visualization with customizable effects
+- **Interval Restoration:** Automatic restoration on configurable intervals for specific uses
+- **Block State Support:** Full support for containers, signs, banners, and all complex block states
+- **Rollback System:** Time-based rollback functionality (e.g., restore to 2 hours ago)
+- **Preview System:** Preview backup states before restoration with particle effects
+- **Database Storage:** Persistent storage with file-based backup system
+
+### Getting Started (Area Rewind):
+1. **Selection:** Use a wooden hoe to select two corners of your area (left-click pos1, right-click pos2)
+2. **Creation:** Use `/rewind save <name>` to create a protected area
+3. **Backup:** Use `/rewind backup <area>` to create manual backups
+4. **Management:** Use `/rewind gui` for easy graphical management
+
+### Player Commands (Area Rewind):
+
+| Command | Description |
+|---------|-------------|
+| `/rewind pos1` | Set position 1 to block you're looking at |
+| `/rewind pos2` | Set position 2 to block you're looking at |
+| `/rewind save <name>` | Create protected area with current selection |
+| `/rewind list [owned/trusted/all]` | List protected areas with filtering |
+| `/rewind info <area>` | Show detailed information about an area |
+| `/rewind teleport <area>` | Teleport to the center of an area |
+| `/rewind backup <area>` | Create manual backup of an area |
+| `/rewind restore <area> <backup_id/latest/oldest>` | Restore area from backup |
+| `/rewind undo <area>` | Undo last change to area |
+| `/rewind redo <area>` | Redo last undone change |
+| `/rewind history <area> [page]` | View backup history with pagination |
+| `/rewind rollback <area> <time>` | Rollback to specific time (e.g., 2h, 30m, 1d) |
+| `/rewind preview <area> <backup_id>` | Preview backup with particles |
+| `/rewind show <area>` | Visualize area boundaries |
+| `/rewind gui` | Open graphical interface |
+
+### Administrative Commands (Area Rewind):
+
+| Command | Description |
+|---------|-------------|
+| `/rewind delete <area>` | Delete area and all its backups |
+| `/rewind rename <old_name> <new_name>` | Rename an area |
+| `/rewind contract <area> <direction> <amount>` | Shrink area in specified direction |
+| `/rewind trust <area> <player>` | Add trusted player to area |
+| `/rewind untrust <area> <player>` | Remove trusted player from area |
+| `/rewind permissions <area>` | View area permissions and trusted players |
+| `/rewind cleanup <area> [days]` | Clean up old backups (default: 7 days) |
+| `/rewind scan <area>` | Scan for changes since last backup |
+| `/rewind diff <area> <id1> <id2>` | Compare two backups |
+| `/rewind interval <area> <minutes> <backup_id>` | Set auto-restore interval |
+| `/rewind particle <name>` | Set particle type for visualizations |
+| `/rewind status` | Show plugin status and statistics |
+| `/rewind reload` | Reload plugin configuration |
+
+**Aliases:** `/ar`, `/arearewind` – **Tool:** Wooden Hoe for area selection
+
 ## **Piston Crusher**
 
 An automation plugin that allows pistons to crush only whitelisted blocks into multiple items, with a configurable multiplier. All settings can be changed live via command, no server restart required.
 
-### Core Features:
+### Core Features (Piston Crusher):
 - **Block Whitelist:** Only allowed blocks are crushed (configurable)
 - **Output Multiplier:** Sets how many items are dropped per block
 - **Crusher Block:** Must be movable by pistons (e.g., no obsidian, bedrock, etc.)
 - **Tab Completion:** Available for all material names
 
-### Example Setup
+### Example Setup (Piston Crusher)
 
 To build a working piston crusher, arrange the blocks in a straight line as follows:
 
@@ -152,7 +224,7 @@ To build a working piston crusher, arrange the blocks in a straight line as foll
 
 Make sure there is nothing blocking the piston from pushing the block into the crusher block. Only blocks on the whitelist will be crushed and multiplied.
 
-### Administrative Commands:
+### Administrative Commands (Piston Crusher):
 | Command | Description |
 |--------|--------------|
 | `/pistoncrusher whitelist add <Material>` | Adds a block to the whitelist |
@@ -180,7 +252,7 @@ A minecart enhancement plugin that adds speed control, auto-pickup, inventory, m
 - **Auto-Sit:** Automatic boarding
 - **Blacklist:** Certain items are not picked up
 
-### Player Commands:
+### Player Commands (Rail Boost):
 | Command | Description |
 |--------|--------------|
 | `/railboost speed <1-6>` | Sets the speed |
@@ -214,7 +286,7 @@ A powerful enchantment system that allows players to apply all vanilla enchantme
 - **Permissions:** Configurable access for all commands
 - **Feedback:** Clear error and confirmation messages
 
-### Player Commands:
+### Player Commands (Super Enchantments):
 | Command | Description |
 |--------|--------------|
 | `/superenchant <enchantment> [level]` | Enchants the item in your hand |
@@ -232,13 +304,13 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## **Screenshots**
 
-The following screenshots demonstrate the core functionality of each plugin, including the achievement system interface, automation, and enhanced minecart features.
+The following screenshots demonstrate the core functionality of each plugin, including the achievement system interface, area protection and backup management, automation, and enhanced minecart features.
 
 <table>
   <tr>
     <th>Plugin - Advanced Achievement</th>
     <th>Plugin - Advanced Achievement</th>
-    <th>Plugin - Piston Crusher</th>
+    <th>Plugin - Area Rewind</th>
   </tr>
   <tr>
     <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-progress.png" target="_blank" rel="noopener noreferrer">
@@ -247,26 +319,24 @@ The following screenshots demonstrate the core functionality of each plugin, inc
     <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-unlocked.png" target="_blank" rel="noopener noreferrer">
       <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-unlocked.png" alt="Achievement Unlocked" width="300">
     </a></td>
-    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-crusher.png" target="_blank" rel="noopener noreferrer">
-      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-crusher.png" alt="Piston Crusher" width="300">
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-arearewind.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-arearewind.png" alt="Area Rewind GUI" width="300">
     </a></td>
   </tr>
   <tr>
-    <th>Plugin - Railboost</th>
+    <th>Plugin - Piston Crusher</th>
     <th>Plugin - Railboost</th>
     <th>Plugin - Super Enchantments</th>
   </tr>
   <tr>
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-crusher.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-crusher.png" alt="Piston Crusher" width="300">
+    </a></td>
     <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-magnet.png" target="_blank" rel="noopener noreferrer">
       <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-magnet.png" alt="Magnet Feature" width="300">
-    </a></td>
-    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-effect.png" target="_blank" rel="noopener noreferrer">
-      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-effect.png" alt="Particle Effect" width="300">
     </a></td>
     <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-enchantment.png" target="_blank" rel="noopener noreferrer">
       <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/img/img_v1.0.1-mcplugin-enchantment.png" alt="Super Enchantment" width="300">
     </a></td>
   </tr>
 </table>
-
-
