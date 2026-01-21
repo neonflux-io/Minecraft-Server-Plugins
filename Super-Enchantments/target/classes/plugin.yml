@@ -1,0 +1,22 @@
+name: SuperEnchantments
+version: 1.0.0
+main: org.example.SuperEnchantments
+api-version: 1.13
+commands:
+  superenchant:
+    description: Add enchantments above normal maximum
+    usage: /superenchant <Enchantment> <Level>
+    aliases: [senchant, se]
+    permission: superenchantments.use
+  enchantlist:
+    description: Shows all available enchantments for the current item
+    usage: /enchantlist
+    aliases: [elist, el]
+    permission: superenchantments.list
+permissions:
+  superenchantments.use:
+    description: Allows using super enchantments
+    default: op
+  superenchantments.list:
+    description: Allows viewing available enchantments
+    default: true

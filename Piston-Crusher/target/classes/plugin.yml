@@ -1,0 +1,10 @@
+name: PistonCrusher
+main: org.example.PistonCrusherPlugin
+version: 1.0.0
+api-version: 1.20
+commands:
+  pistoncrusher:
+    description: Configure the PistonCrusher (Blacklist, Multiplier)
+    usage: /pistoncrusher <blacklist|multiplier>
+    permission: pistoncrusher.admin
+    permission-message: You do not have permission to use this command.
