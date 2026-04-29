@@ -98,8 +98,12 @@ All plugins are designed to work seamlessly together and with popular server plu
 11. [Useful Autocrafter](#useful-autocrafter)
   - [Core Features](#core-features-9)
   - [Player Commands](#player-commands-7)
-12. [License](#license)
-13. [Screenshots](#screenshots)
+12. [NPC Item Pickup and Drop](#npc-item-pickup-and-drop)
+  - [Core Features](#core-features-10)
+  - [Administrative Commands](#administrative-commands-2)
+  - [Usage Examples](#usage-examples-1)
+13. [License](#license)
+14. [Screenshots](#screenshots)
 
 ## **Getting Started**
 
