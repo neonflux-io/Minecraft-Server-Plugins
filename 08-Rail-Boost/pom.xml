@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.railboost</groupId>
     <artifactId>Rail-Boost</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.4</version>
     <packaging>jar</packaging>
     <name>Rail-Boost</name>
     <description>Minecraft RailBoost Plugin</description>

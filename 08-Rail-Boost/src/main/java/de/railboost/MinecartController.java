@@ -30,6 +30,7 @@ import org.bukkit.block.BlockFace;
 import java.util.Map;
 import java.util.Collection;
 import java.util.Set;
+import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.UUID;
 
@@ -44,6 +45,10 @@ public class MinecartController implements Listener {
 
     private static final long EFFECT_COOLDOWN = 100;
     private static final double[] SPEED_LEVELS = {0.4, 0.8, 1.2, 2.0, 3.0, 4.0};
+    private static final double MAGNET_RANGE = 8.0;
+    private static final double MAGNET_TARGET_GAP = 1.05;
+    private static final double MAGNET_LATERAL_TOLERANCE = 1.15;
+    private static final double MAGNET_SNAP_TOLERANCE = 0.03;
 
     public MinecartController(RailBoostPlugin plugin) {
         this.plugin = plugin;
@@ -55,9 +60,15 @@ public class MinecartController implements Listener {
             @Override
             public void run() {
                 updateSpeedometers();
-                handleMagnetism();
             }
         }.runTaskTimer(plugin, 0, 5);
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                handleMagnetism();
+            }
+        }.runTaskTimer(plugin, 0, 1);
     }
 
     @EventHandler
@@ -179,7 +190,7 @@ public class MinecartController implements Listener {
         Vector direction = velocity.normalize();
 
         for (int i = 1; i <= 3; i++) {
-            Location checkLoc = loc.clone().add(direction.multiply(i));
+            Location checkLoc = loc.clone().add(direction.clone().multiply(i));
             Block checkBlock = getRailBlock(checkLoc);
 
             if (checkBlock != null) {
@@ -430,37 +441,98 @@ public class MinecartController implements Listener {
     private void handleMagnetism() {
         for (World world : Bukkit.getWorlds()) {
             Collection<Minecart> minecarts = world.getEntitiesByClass(Minecart.class);
+            Set<UUID> coupledFollowers = new HashSet<>();
 
-            for (Minecart magnetCart : minecarts) {
-                MinecartSettings magnetSettings = getMinecartSettings(magnetCart);
-                if (magnetSettings == null || !magnetSettings.isMagnet()) continue;
+            for (Minecart leader : minecarts) {
+                MinecartSettings leaderSettings = getMinecartSettings(leader);
+                if (leaderSettings == null || !leaderSettings.isMagnet()) continue;
+
+                Vector leaderDir = getRailAlignedDirection(leader);
+                if (leaderDir == null) continue;
+                rememberDirection(leader, leaderDir);
+
+                Minecart follower = null;
+                double nearestBehindDistance = Double.MAX_VALUE;
 
                 for (Minecart otherCart : minecarts) {
-                    if (magnetCart.equals(otherCart)) continue;
+                    if (leader.equals(otherCart)) continue;
+                    if (coupledFollowers.contains(otherCart.getUniqueId())) continue;
 
-                    double distance = magnetCart.getLocation().distance(otherCart.getLocation());
+                    MinecartSettings otherSettings = getMinecartSettings(otherCart);
+                    if (otherSettings == null || !otherSettings.isMagnet()) continue;
 
-                    if (distance < 5.0 && distance > 0.5) {
-                        Vector direction = magnetCart.getLocation().toVector()
-                                .subtract(otherCart.getLocation().toVector()).normalize();
+                    Vector toOther = otherCart.getLocation().toVector().subtract(leader.getLocation().toVector());
+                    toOther.setY(0);
 
-                        double strength = 0.03 / Math.max(distance, 1.0);
-                        Vector pull = direction.multiply(strength);
+                    double euclideanDistance = toOther.length();
+                    if (euclideanDistance < 0.2 || euclideanDistance > MAGNET_RANGE) continue;
 
-                        otherCart.setVelocity(otherCart.getVelocity().add(pull));
+                    double longitudinal = toOther.dot(leaderDir);
+                    if (longitudinal >= -0.1) continue;
 
-                    } else if (distance <= 0.5 && distance > 0.1) {
-                        Vector direction = magnetCart.getLocation().toVector()
-                                .subtract(otherCart.getLocation().toVector()).normalize();
+                    Vector lateral = toOther.clone().subtract(leaderDir.clone().multiply(longitudinal));
+                    if (lateral.length() > MAGNET_LATERAL_TOLERANCE) continue;
 
-                        Vector slowPull = direction.multiply(0.01);
-                        otherCart.setVelocity(otherCart.getVelocity().add(slowPull));
-
-                    } else if (distance <= 0.1) {
-                        otherCart.setVelocity(new Vector(0, 0, 0));
+                    double behindDistance = Math.abs(longitudinal);
+                    if (behindDistance < nearestBehindDistance) {
+                        nearestBehindDistance = behindDistance;
+                        follower = otherCart;
                     }
                 }
+
+                if (follower == null) continue;
+
+                Vector desiredFollowerPosVec = leader.getLocation().toVector().subtract(leaderDir.clone().multiply(MAGNET_TARGET_GAP));
+                Location desiredFollowerLoc = leader.getLocation().clone();
+                desiredFollowerLoc.setX(desiredFollowerPosVec.getX());
+                desiredFollowerLoc.setY(leader.getLocation().getY());
+                desiredFollowerLoc.setZ(desiredFollowerPosVec.getZ());
+                desiredFollowerLoc.setYaw(follower.getLocation().getYaw());
+                desiredFollowerLoc.setPitch(follower.getLocation().getPitch());
+
+                if (follower.getLocation().distanceSquared(desiredFollowerLoc) > MAGNET_SNAP_TOLERANCE * MAGNET_SNAP_TOLERANCE) {
+                    follower.teleport(desiredFollowerLoc);
+                }
+
+                Vector leaderVelocity = leader.getVelocity();
+                follower.setVelocity(new Vector(leaderVelocity.getX(), follower.getVelocity().getY(), leaderVelocity.getZ()));
+                coupledFollowers.add(follower.getUniqueId());
             }
+        }
+    }
+
+    private void rememberDirection(Minecart cart, Vector direction) {
+        lastValidVelocity.put(cart.getUniqueId(), direction.clone());
+    }
+
+    private Vector getRailAlignedDirection(Minecart cart) {
+        Vector velocity = cart.getVelocity();
+        Vector horizontalVelocity = new Vector(velocity.getX(), 0, velocity.getZ());
+        if (horizontalVelocity.lengthSquared() > 0.0001) {
+            return horizontalVelocity.normalize();
+        }
+
+        Block railBlock = getRailBlock(cart.getLocation());
+        if (railBlock == null) return null;
+
+        org.bukkit.block.data.BlockData data = railBlock.getBlockData();
+        if (!(data instanceof org.bukkit.block.data.Rail)) return null;
+
+        org.bukkit.block.data.Rail.Shape shape = ((org.bukkit.block.data.Rail) data).getShape();
+        switch (shape) {
+            case EAST_WEST:
+                return new Vector(1, 0, 0);
+            case NORTH_SOUTH:
+                return new Vector(0, 0, 1);
+            case ASCENDING_EAST:
+            case ASCENDING_WEST:
+                return new Vector(1, 0, 0);
+            case ASCENDING_NORTH:
+            case ASCENDING_SOUTH:
+                return new Vector(0, 0, 1);
+            default:
+                Vector last = lastValidVelocity.get(cart.getUniqueId());
+                return last == null ? null : last.clone().normalize();
         }
     }
 

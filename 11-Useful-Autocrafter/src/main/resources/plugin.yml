@@ -1,0 +1,19 @@
+name: Useful-Autocrafters
+version: "${project.version}"
+main: com.usefulautocrafters.UsefulAutocrafters
+api-version: "1.21"
+author: YourName
+description: Prevents autocrafters from running out of items
+website: https://github.com/yourname/useful-autocrafters
+
+commands:
+  usefulcrafter:
+    description: Toggle the Useful-Autocrafters functionality on or off
+    usage: /usefulcrafter <on|off>
+    permission: usefulautocrafters.toggle
+    aliases: [uac, ucraft]
+
+permissions:
+  usefulautocrafters.toggle:
+    description: Allows toggling the Useful-Autocrafters functionality
+    default: op

@@ -1,4 +1,4 @@
-achievements:
+﻿achievements:
   first_steps:
     title: "First Steps"
     description: "Break your first 10 blocks"
@@ -15,15 +15,29 @@ achievements:
 
   wood_collector:
     title: "Wood Collector"
-    description: "Collect 64 wood logs"
+    description: "Collect 64 oak logs"
     icon: "OAK_LOG"
     task:
       type: "item_pickup"
-      target: "LOG"
+      target: "OAK_LOG"
       amount: 64
     rewards:
       - "iron_axe:1"
       - "experience:200"
+    hidden: false
+    prerequisites: []
+
+  stone_mason:
+    title: "Stone Mason"
+    description: "Place 200 stone bricks"
+    icon: "STONE_BRICKS"
+    task:
+      type: "block_place"
+      target: "STONE_BRICKS"
+      amount: 200
+    rewards:
+      - "stone_bricks:128"
+      - "experience:250"
     hidden: false
     prerequisites: []
 
@@ -41,6 +55,20 @@ achievements:
     hidden: false
     prerequisites: []
 
+  duel_victor:
+    title: "Duel Victor"
+    description: "Defeat 3 players"
+    icon: "DIAMOND_SWORD"
+    task:
+      type: "player_kill"
+      target: "ANY"
+      amount: 3
+    rewards:
+      - "ender_pearl:8"
+      - "experience:450"
+    hidden: false
+    prerequisites: []
+
   master_crafter:
     title: "Master Crafter"
     description: "Craft 100 items"
@@ -55,7 +83,21 @@ achievements:
     hidden: false
     prerequisites: []
 
-  fisher:
+  furnace_apprentice:
+    title: "Furnace Apprentice"
+    description: "Smelt 64 iron ingots"
+    icon: "FURNACE"
+    task:
+      type: "item_smelt"
+      target: "IRON_INGOT"
+      amount: 64
+    rewards:
+      - "coal_block:8"
+      - "experience:300"
+    hidden: false
+    prerequisites: []
+
+  angler:
     title: "Angler"
     description: "Catch 50 fish"
     icon: "FISHING_ROD"
@@ -69,31 +111,17 @@ achievements:
     hidden: false
     prerequisites: []
 
-  miner:
-    title: "Deep Miner"
-    description: "Mine 500 blocks of ore"
-    icon: "DIAMOND_PICKAXE"
+  hearty_diet:
+    title: "Hearty Diet"
+    description: "Eat 40 food items"
+    icon: "COOKED_BEEF"
     task:
-      type: "mining"
+      type: "eating"
       target: "ANY"
-      amount: 500
+      amount: 40
     rewards:
-      - "iron_pickaxe:1"
-      - "experience:1000"
-    hidden: false
-    prerequisites: []
-
-  animal_lover:
-    title: "Animal Lover"
-    description: "Tame 10 animals"
-    icon: "BONE"
-    task:
-      type: "taming"
-      target: "ANY"
-      amount: 10
-    rewards:
-      - "hay_block:10"
-      - "experience:250"
+      - "golden_carrot:16"
+      - "experience:350"
     hidden: false
     prerequisites: []
 
@@ -111,9 +139,9 @@ achievements:
     hidden: false
     prerequisites: []
 
-  trader:
+  merchant:
     title: "Merchant"
-    description: "Complete 20 trades with villagers"
+    description: "Complete 20 villager trades"
     icon: "EMERALD"
     task:
       type: "trading"
@@ -124,19 +152,104 @@ achievements:
       - "experience:500"
     hidden: false
     prerequisites: []
-  master_builder:
-    title: "Master Builder"
-    description: "Break 1000 blocks (any type)"
-    icon: "STONE_BRICKS"
+
+  deep_miner:
+    title: "Deep Miner"
+    description: "Mine 500 ore blocks"
+    icon: "DIAMOND_PICKAXE"
     task:
-      type: "block_break"
+      type: "mining"
       target: "ANY"
-      amount: 1000
+      amount: 500
     rewards:
-      - "diamond_block:1"
-      - "experience:800"
+      - "iron_pickaxe:1"
+      - "experience:1000"
     hidden: false
-    prerequisites: ["first_steps"]
+    prerequisites: []
+
+  heavy_hitter:
+    title: "Heavy Hitter"
+    description: "Deal 750 total damage"
+    icon: "NETHERITE_SWORD"
+    task:
+      type: "damage_dealt"
+      target: "ANY"
+      amount: 750
+    rewards:
+      - "strength_potion:2"
+      - "experience:650"
+    hidden: false
+    prerequisites: []
+
+  iron_skin:
+    title: "Iron Skin"
+    description: "Take 500 total damage"
+    icon: "SHIELD"
+    task:
+      type: "damage_taken"
+      target: "ANY"
+      amount: 500
+    rewards:
+      - "shield:1"
+      - "experience:550"
+    hidden: false
+    prerequisites: []
+
+  marathoner:
+    title: "Marathoner"
+    description: "Walk 2500 blocks"
+    icon: "LEATHER_BOOTS"
+    task:
+      type: "walk_distance"
+      target: "ANY"
+      amount: 250000
+    rewards:
+      - "sugar:32"
+      - "experience:500"
+    hidden: false
+    prerequisites: []
+
+  dedicated_one:
+    title: "Dedicated One"
+    description: "Play for 1 hour"
+    icon: "CLOCK"
+    task:
+      type: "play_time"
+      target: "ANY"
+      amount: 3600
+    rewards:
+      - "gold_ingot:16"
+      - "experience:450"
+    hidden: false
+    prerequisites: []
+
+  animal_lover:
+    title: "Animal Lover"
+    description: "Tame 10 animals"
+    icon: "BONE"
+    task:
+      type: "taming"
+      target: "ANY"
+      amount: 10
+    rewards:
+      - "hay_block:10"
+      - "experience:250"
+    hidden: false
+    prerequisites: []
+
+  rancher:
+    title: "Rancher"
+    description: "Breed 20 animals"
+    icon: "WHEAT"
+    task:
+      type: "breeding"
+      target: "ANY"
+      amount: 20
+    rewards:
+      - "cake:2"
+      - "experience:400"
+    hidden: false
+    prerequisites: []
 
   unfortunate_soul:
     title: "Unfortunate Soul"
@@ -144,7 +257,7 @@ achievements:
     icon: "SKELETON_SKULL"
     task:
       type: "death"
-      target: "player:player1"
+      target: "ANY"
       amount: 10
     rewards:
       - "totem_of_undying:1"
@@ -165,3 +278,143 @@ achievements:
       - "experience:5000"
     hidden: true
     prerequisites: ["monster_hunter"]
+
+  wither_bane:
+    title: "Wither Bane"
+    description: "Kill the Wither"
+    icon: "NETHER_STAR"
+    task:
+      type: "mob_kill"
+      target: "WITHER"
+      amount: 1
+    rewards:
+      - "beacon:1"
+      - "experience:3500"
+    hidden: true
+    prerequisites: ["monster_hunter"]
+
+  nether_scout:
+    title: "Nether Scout"
+    description: "Walk 1500 blocks in the Nether"
+    icon: "NETHERRACK"
+    task:
+      type: "walk_distance"
+      target: "world_nether"
+      amount: 150000
+    rewards:
+      - "blaze_rod:8"
+      - "experience:700"
+    hidden: false
+    prerequisites: ["marathoner"]
+
+  cave_engineer:
+    title: "Cave Engineer"
+    description: "Break 500 deepslate blocks"
+    icon: "DEEPSLATE"
+    task:
+      type: "block_break"
+      target: "DEEPSLATE"
+      amount: 500
+    rewards:
+      - "deepslate_tiles:128"
+      - "experience:450"
+    hidden: false
+    prerequisites: ["first_steps"]
+
+  diamond_hands:
+    title: "Diamond Hands"
+    description: "Pick up 64 diamonds"
+    icon: "DIAMOND"
+    task:
+      type: "item_pickup"
+      target: "DIAMOND"
+      amount: 64
+    rewards:
+      - "diamond_block:2"
+      - "experience:1200"
+    hidden: false
+    prerequisites: ["deep_miner"]
+
+  beast_master:
+    title: "Beast Master"
+    description: "Tame 5 wolves"
+    icon: "WOLF_SPAWN_EGG"
+    task:
+      type: "taming"
+      target: "WOLF"
+      amount: 5
+    rewards:
+      - "bone:32"
+      - "experience:500"
+    hidden: false
+    prerequisites: ["animal_lover"]
+
+  village_tycoon:
+    title: "Village Tycoon"
+    description: "Complete 100 villager trades"
+    icon: "GOLD_BLOCK"
+    task:
+      type: "trading"
+      target: "ANY"
+      amount: 100
+    rewards:
+      - "emerald_block:3"
+      - "experience:1500"
+    hidden: false
+    prerequisites: ["merchant"]
+
+  smelt_master:
+    title: "Smelt Master"
+    description: "Smelt 128 gold ingots"
+    icon: "BLAST_FURNACE"
+    task:
+      type: "item_smelt"
+      target: "GOLD_INGOT"
+      amount: 128
+    rewards:
+      - "gold_block:3"
+      - "experience:900"
+    hidden: false
+    prerequisites: ["furnace_apprentice"]
+
+  architect:
+    title: "Architect"
+    description: "Place 2000 blocks"
+    icon: "QUARTZ_BLOCK"
+    task:
+      type: "block_place"
+      target: "ANY"
+      amount: 2000
+    rewards:
+      - "quartz_block:64"
+      - "experience:900"
+    hidden: false
+    prerequisites: ["stone_mason"]
+
+  battle_hardened:
+    title: "Battle Hardened"
+    description: "Deal 5000 total damage"
+    icon: "NETHERITE_CHESTPLATE"
+    task:
+      type: "damage_dealt"
+      target: "ANY"
+      amount: 5000
+    rewards:
+      - "netherite_ingot:1"
+      - "experience:2000"
+    hidden: false
+    prerequisites: ["heavy_hitter"]
+
+  legend_of_the_realm:
+    title: "Legend of the Realm"
+    description: "Play for 6 hours"
+    icon: "NETHER_STAR"
+    task:
+      type: "play_time"
+      target: "ANY"
+      amount: 21600
+    rewards:
+      - "nether_star:1"
+      - "experience:3000"
+    hidden: true
+    prerequisites: ["dragon_slayer", "wither_bane", "battle_hardened", "village_tycoon"]

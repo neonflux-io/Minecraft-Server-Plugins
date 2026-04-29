@@ -2,14 +2,21 @@ package com.example.advancedachievements.enums;
 
 public enum TaskType {
     BLOCK_BREAK("block_break", "Break specific blocks or any blocks"),
+    BLOCK_PLACE("block_place", "Place specific blocks or any blocks"),
     ITEM_PICKUP("item_pickup", "Pick up and collect items from the ground"),
     MOB_KILL("mob_kill", "Defeat hostile mobs or specific creatures"),
+    PLAYER_KILL("player_kill", "Defeat other players in combat"),
     ITEM_CRAFT("item_craft", "Craft items using a crafting table or inventory"),
+    ITEM_SMELT("item_smelt", "Smelt items in furnaces and collect results"),
     FISHING("fishing", "Catch fish or treasures using a fishing rod"),
     EATING("eating", "Consume food items to restore hunger"),
     ENCHANTING("enchanting", "Enchant items using an enchantment table"),
     TRADING("trading", "Trade with villagers using emeralds"),
     MINING("mining", "Mine and collect ores from underground"),
+    DAMAGE_DEALT("damage_dealt", "Deal combat damage to entities"),
+    DAMAGE_TAKEN("damage_taken", "Take incoming damage from hazards or enemies"),
+    WALK_DISTANCE("walk_distance", "Travel distance while moving"),
+    PLAY_TIME("play_time", "Spend time online on the server"),
     BREEDING("breeding", "Breed animals to create baby animals"),
     TAMING("taming", "Tame wild animals to make them your pets"),
     DEATH("death", "Die a certain number of times");

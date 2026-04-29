@@ -5,6 +5,7 @@ com\example\advancedachievements\models\Achievement.class
 com\example\advancedachievements\managers\MessageManager.class
 com\example\advancedachievements\AdvancedAchievements.class
 com\example\advancedachievements\commands\AchievementCommand.class
+com\example\advancedachievements\listeners\AchievementListener$1.class
 com\example\advancedachievements\managers\ProgressManager.class
 com\example\advancedachievements\api\AchievementAPI.class
 com\example\advancedachievements\events\AchievementUnlockEvent.class

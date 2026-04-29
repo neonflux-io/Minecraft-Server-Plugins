@@ -24,6 +24,10 @@ public class AchievementCommand implements CommandExecutor, TabCompleter {
         this.plugin = plugin;
     }
 
+    private TaskType[] getSupportedTaskTypes() {
+        return TaskType.values();
+    }
+
     public static class CreationSession {
         public enum CreationStep {
             TASK_TYPE, TITLE, DESCRIPTION, ICON, TARGET, AMOUNT, REWARDS, CONFIRM
@@ -45,7 +49,7 @@ public class AchievementCommand implements CommandExecutor, TabCompleter {
             steps.add(CreationStep.TITLE);
             steps.add(CreationStep.DESCRIPTION);
             steps.add(CreationStep.ICON);
-            if (taskType != TaskType.ENCHANTING && taskType != TaskType.TRADING) {
+            if (taskType != TaskType.ENCHANTING && taskType != TaskType.TRADING && taskType != TaskType.PLAY_TIME && taskType != TaskType.WALK_DISTANCE) {
                 steps.add(CreationStep.TARGET);
             }
             steps.add(CreationStep.AMOUNT);
@@ -362,14 +366,7 @@ public class AchievementCommand implements CommandExecutor, TabCompleter {
         if (session != null && args[0].equalsIgnoreCase("create")) {
             switch (session.step) {
                 case TASK_TYPE:
-                    TaskType[] workingTypes = {
-                            TaskType.BLOCK_BREAK, TaskType.ITEM_PICKUP, TaskType.MOB_KILL,
-                            TaskType.ITEM_CRAFT, TaskType.FISHING,
-                            TaskType.EATING, TaskType.ENCHANTING, TaskType.TRADING,
-                            TaskType.MINING, TaskType.BREEDING, TaskType.TAMING, TaskType.DEATH
-                    };
-
-                    return Arrays.stream(workingTypes)
+                    return Arrays.stream(getSupportedTaskTypes())
                             .map(TaskType::getId)
                             .filter(id -> id.toLowerCase().startsWith(args[1].toLowerCase()))
                             .collect(Collectors.toList());
@@ -502,14 +499,7 @@ public class AchievementCommand implements CommandExecutor, TabCompleter {
             player.sendMessage("§7Step 1: Choose a task type");
             player.sendMessage("§7Available types:");
             player.sendMessage("");
-            TaskType[] workingTypes = {
-                    TaskType.BLOCK_BREAK, TaskType.ITEM_PICKUP, TaskType.MOB_KILL,
-                    TaskType.ITEM_CRAFT, TaskType.FISHING,
-                    TaskType.EATING, TaskType.ENCHANTING, TaskType.TRADING,
-                    TaskType.MINING, TaskType.BREEDING, TaskType.TAMING, TaskType.DEATH
-            };
-
-            for (TaskType type : workingTypes) {
+            for (TaskType type : getSupportedTaskTypes()) {
                 player.sendMessage("§f- §e" + type.getId() + " §7(" + type.getDisplayName() + ")");
             }
 
@@ -534,15 +524,9 @@ public class AchievementCommand implements CommandExecutor, TabCompleter {
         switch (session.step) {
             case TASK_TYPE:
                 TaskType taskType = TaskType.fromId(input);
-                TaskType[] workingTypes = {
-                        TaskType.BLOCK_BREAK, TaskType.ITEM_PICKUP, TaskType.MOB_KILL,
-                        TaskType.ITEM_CRAFT, TaskType.FISHING,
-                        TaskType.EATING, TaskType.ENCHANTING, TaskType.TRADING,
-                        TaskType.MINING, TaskType.BREEDING, TaskType.TAMING, TaskType.DEATH
-                };
 
                 boolean isWorkingType = false;
-                for (TaskType workingType : workingTypes) {
+                for (TaskType workingType : getSupportedTaskTypes()) {
                     if (workingType == taskType) {
                         isWorkingType = true;
                         break;
@@ -552,7 +536,7 @@ public class AchievementCommand implements CommandExecutor, TabCompleter {
                 if (taskType == null || !isWorkingType) {
                     player.sendMessage("§cInvalid task type! Available types:");
                     player.sendMessage("");
-                    for (TaskType type : workingTypes) {
+                    for (TaskType type : getSupportedTaskTypes()) {
                         player.sendMessage("§f- §e" + type.getId() + " §7(" + type.getDisplayName() + ")");
                     }
                     player.sendMessage("");
@@ -596,7 +580,7 @@ public class AchievementCommand implements CommandExecutor, TabCompleter {
                 break;
             case TARGET:
                 boolean validTarget = false;
-                if (session.taskType == TaskType.BLOCK_BREAK || session.taskType == TaskType.MINING || session.taskType == TaskType.ITEM_CRAFT) {
+                if (session.taskType == TaskType.BLOCK_BREAK || session.taskType == TaskType.BLOCK_PLACE || session.taskType == TaskType.MINING || session.taskType == TaskType.ITEM_CRAFT || session.taskType == TaskType.ITEM_PICKUP || session.taskType == TaskType.ITEM_SMELT || session.taskType == TaskType.EATING) {
                     try {
                         Material.valueOf(input.toUpperCase());
                         session.target = input.toLowerCase();
@@ -605,13 +589,22 @@ public class AchievementCommand implements CommandExecutor, TabCompleter {
                         player.sendMessage("§cInvalid block/item name! Please enter a valid Minecraft material.");
                         player.sendMessage("§7Example: §f" + getStepExample(session.taskType, CreationSession.CreationStep.TARGET));
                     }
-                } else if (session.taskType == TaskType.MOB_KILL || session.taskType == TaskType.BREEDING || session.taskType == TaskType.TAMING) {
+                } else if (session.taskType == TaskType.MOB_KILL || session.taskType == TaskType.BREEDING || session.taskType == TaskType.TAMING || session.taskType == TaskType.DAMAGE_DEALT) {
                     try {
                         org.bukkit.entity.EntityType.valueOf(input.toUpperCase());
                         session.target = input.toLowerCase();
                         validTarget = true;
                     } catch (IllegalArgumentException e) {
                         player.sendMessage("§cInvalid entity name! Please enter a valid Minecraft entity.");
+                        player.sendMessage("§7Example: §f" + getStepExample(session.taskType, CreationSession.CreationStep.TARGET));
+                    }
+                } else if (session.taskType == TaskType.DAMAGE_TAKEN) {
+                    try {
+                        org.bukkit.event.entity.EntityDamageEvent.DamageCause.valueOf(input.toUpperCase());
+                        session.target = input.toUpperCase();
+                        validTarget = true;
+                    } catch (IllegalArgumentException e) {
+                        player.sendMessage("§cInvalid damage cause! Please enter a valid damage cause.");
                         player.sendMessage("§7Example: §f" + getStepExample(session.taskType, CreationSession.CreationStep.TARGET));
                     }
                 } else if (session.taskType == TaskType.FISHING) {
@@ -740,11 +733,17 @@ public class AchievementCommand implements CommandExecutor, TabCompleter {
                 case BLOCK_BREAK:
                     session.icon = Material.DIAMOND_PICKAXE;
                     break;
+                case BLOCK_PLACE:
+                    session.icon = Material.BRICKS;
+                    break;
                 case EATING:
                     session.icon = Material.APPLE;
                     break;
                 case ITEM_CRAFT:
                     session.icon = Material.CRAFTING_TABLE;
+                    break;
+                case ITEM_SMELT:
+                    session.icon = Material.FURNACE;
                     break;
                 case FISHING:
                     session.icon = Material.FISHING_ROD;
@@ -754,6 +753,21 @@ public class AchievementCommand implements CommandExecutor, TabCompleter {
                     break;
                 case ITEM_PICKUP:
                     session.icon = Material.CHEST;
+                    break;
+                case PLAYER_KILL:
+                    session.icon = Material.DIAMOND_SWORD;
+                    break;
+                case DAMAGE_DEALT:
+                    session.icon = Material.NETHERITE_SWORD;
+                    break;
+                case DAMAGE_TAKEN:
+                    session.icon = Material.SHIELD;
+                    break;
+                case WALK_DISTANCE:
+                    session.icon = Material.LEATHER_BOOTS;
+                    break;
+                case PLAY_TIME:
+                    session.icon = Material.CLOCK;
                     break;
                 case ENCHANTING:
                     session.icon = Material.ENCHANTING_TABLE;
@@ -1005,14 +1019,23 @@ public class AchievementCommand implements CommandExecutor, TabCompleter {
                         case BLOCK_BREAK:
                             targetStep = "Step 5: Which block should be broken?";
                             break;
+                        case BLOCK_PLACE:
+                            targetStep = "Step 5: Which block should be placed?";
+                            break;
                         case ITEM_PICKUP:
                             targetStep = "Step 5: Which item should be picked up?";
                             break;
                         case MOB_KILL:
                             targetStep = "Step 5: Which mob should be killed?";
                             break;
+                        case PLAYER_KILL:
+                            targetStep = "Step 5: Which player should be killed?";
+                            break;
                         case ITEM_CRAFT:
                             targetStep = "Step 5: Which item should be crafted?";
+                            break;
+                        case ITEM_SMELT:
+                            targetStep = "Step 5: Which item should be smelted?";
                             break;
                         case FISHING:
                             targetStep = "Step 5: Which fish or item should be caught?";
@@ -1028,6 +1051,18 @@ public class AchievementCommand implements CommandExecutor, TabCompleter {
                             break;
                         case MINING:
                             targetStep = "Step 5: Which ore or block should be mined?";
+                            break;
+                        case DAMAGE_DEALT:
+                            targetStep = "Step 5: Which target entity should receive damage?";
+                            break;
+                        case DAMAGE_TAKEN:
+                            targetStep = "Step 5: Which damage cause should count?";
+                            break;
+                        case WALK_DISTANCE:
+                            targetStep = "Step 5: Target is not required for walk distance achievements.";
+                            break;
+                        case PLAY_TIME:
+                            targetStep = "Step 5: Target is not required for play time achievements.";
                             break;
                         case BREEDING:
                             targetStep = "Step 5: Which animal should be bred?";
@@ -1076,7 +1111,7 @@ public class AchievementCommand implements CommandExecutor, TabCompleter {
     }
 
     private void showTargetStep(Player player, CreationSession session) {
-        if (session.taskType == TaskType.ENCHANTING || session.taskType == TaskType.TRADING) {
+        if (session.taskType == TaskType.ENCHANTING || session.taskType == TaskType.TRADING || session.taskType == TaskType.PLAY_TIME || session.taskType == TaskType.WALK_DISTANCE) {
             session.target = "ANY";
             session.step = session.getNextStep(CreationSession.CreationStep.TARGET);
             showAmountStep(player, session);
@@ -1168,12 +1203,24 @@ public class AchievementCommand implements CommandExecutor, TabCompleter {
         putStepExample(TaskType.BLOCK_BREAK, CreationSession.CreationStep.TARGET, "stone");
         putStepExample(TaskType.BLOCK_BREAK, CreationSession.CreationStep.AMOUNT, "100");
         putStepExample(TaskType.BLOCK_BREAK, CreationSession.CreationStep.REWARDS, rewardsExample);
+        putStepExample(TaskType.BLOCK_PLACE, CreationSession.CreationStep.TITLE, "Builder");
+        putStepExample(TaskType.BLOCK_PLACE, CreationSession.CreationStep.DESCRIPTION, "Place 200 stone bricks");
+        putStepExample(TaskType.BLOCK_PLACE, CreationSession.CreationStep.ICON, "bricks");
+        putStepExample(TaskType.BLOCK_PLACE, CreationSession.CreationStep.TARGET, "stone_bricks");
+        putStepExample(TaskType.BLOCK_PLACE, CreationSession.CreationStep.AMOUNT, "200");
+        putStepExample(TaskType.BLOCK_PLACE, CreationSession.CreationStep.REWARDS, rewardsExample);
         putStepExample(TaskType.MOB_KILL, CreationSession.CreationStep.TITLE, "Zombie Slayer");
         putStepExample(TaskType.MOB_KILL, CreationSession.CreationStep.DESCRIPTION, "Kill 10 zombies");
         putStepExample(TaskType.MOB_KILL, CreationSession.CreationStep.ICON, "iron_sword");
         putStepExample(TaskType.MOB_KILL, CreationSession.CreationStep.TARGET, "zombie");
         putStepExample(TaskType.MOB_KILL, CreationSession.CreationStep.AMOUNT, "10");
         putStepExample(TaskType.MOB_KILL, CreationSession.CreationStep.REWARDS, rewardsExample);
+        putStepExample(TaskType.PLAYER_KILL, CreationSession.CreationStep.TITLE, "Duel Victor");
+        putStepExample(TaskType.PLAYER_KILL, CreationSession.CreationStep.DESCRIPTION, "Defeat 3 players");
+        putStepExample(TaskType.PLAYER_KILL, CreationSession.CreationStep.ICON, "diamond_sword");
+        putStepExample(TaskType.PLAYER_KILL, CreationSession.CreationStep.TARGET, "ANY");
+        putStepExample(TaskType.PLAYER_KILL, CreationSession.CreationStep.AMOUNT, "3");
+        putStepExample(TaskType.PLAYER_KILL, CreationSession.CreationStep.REWARDS, rewardsExample);
         putStepExample(TaskType.ITEM_PICKUP, CreationSession.CreationStep.TITLE, "Diamond Collector");
         putStepExample(TaskType.ITEM_PICKUP, CreationSession.CreationStep.DESCRIPTION, "Pick up 5 diamonds");
         putStepExample(TaskType.ITEM_PICKUP, CreationSession.CreationStep.ICON, "diamond");
@@ -1186,6 +1233,12 @@ public class AchievementCommand implements CommandExecutor, TabCompleter {
         putStepExample(TaskType.ITEM_CRAFT, CreationSession.CreationStep.TARGET, "diamond_sword");
         putStepExample(TaskType.ITEM_CRAFT, CreationSession.CreationStep.AMOUNT, "3");
         putStepExample(TaskType.ITEM_CRAFT, CreationSession.CreationStep.REWARDS, rewardsExample);
+        putStepExample(TaskType.ITEM_SMELT, CreationSession.CreationStep.TITLE, "Smelter");
+        putStepExample(TaskType.ITEM_SMELT, CreationSession.CreationStep.DESCRIPTION, "Smelt 64 iron ingots");
+        putStepExample(TaskType.ITEM_SMELT, CreationSession.CreationStep.ICON, "furnace");
+        putStepExample(TaskType.ITEM_SMELT, CreationSession.CreationStep.TARGET, "iron_ingot");
+        putStepExample(TaskType.ITEM_SMELT, CreationSession.CreationStep.AMOUNT, "64");
+        putStepExample(TaskType.ITEM_SMELT, CreationSession.CreationStep.REWARDS, rewardsExample);
         putStepExample(TaskType.FISHING, CreationSession.CreationStep.TITLE, "Fisherman");
         putStepExample(TaskType.FISHING, CreationSession.CreationStep.DESCRIPTION, "Catch 10 fish");
         putStepExample(TaskType.FISHING, CreationSession.CreationStep.ICON, "fishing_rod");
@@ -1216,6 +1269,30 @@ public class AchievementCommand implements CommandExecutor, TabCompleter {
         putStepExample(TaskType.MINING, CreationSession.CreationStep.TARGET, "iron_ore");
         putStepExample(TaskType.MINING, CreationSession.CreationStep.AMOUNT, "20");
         putStepExample(TaskType.MINING, CreationSession.CreationStep.REWARDS, rewardsExample);
+        putStepExample(TaskType.DAMAGE_DEALT, CreationSession.CreationStep.TITLE, "Heavy Hitter");
+        putStepExample(TaskType.DAMAGE_DEALT, CreationSession.CreationStep.DESCRIPTION, "Deal 500 damage");
+        putStepExample(TaskType.DAMAGE_DEALT, CreationSession.CreationStep.ICON, "netherite_sword");
+        putStepExample(TaskType.DAMAGE_DEALT, CreationSession.CreationStep.TARGET, "ANY");
+        putStepExample(TaskType.DAMAGE_DEALT, CreationSession.CreationStep.AMOUNT, "500");
+        putStepExample(TaskType.DAMAGE_DEALT, CreationSession.CreationStep.REWARDS, rewardsExample);
+        putStepExample(TaskType.DAMAGE_TAKEN, CreationSession.CreationStep.TITLE, "Tank");
+        putStepExample(TaskType.DAMAGE_TAKEN, CreationSession.CreationStep.DESCRIPTION, "Take 300 damage");
+        putStepExample(TaskType.DAMAGE_TAKEN, CreationSession.CreationStep.ICON, "shield");
+        putStepExample(TaskType.DAMAGE_TAKEN, CreationSession.CreationStep.TARGET, "ANY");
+        putStepExample(TaskType.DAMAGE_TAKEN, CreationSession.CreationStep.AMOUNT, "300");
+        putStepExample(TaskType.DAMAGE_TAKEN, CreationSession.CreationStep.REWARDS, rewardsExample);
+        putStepExample(TaskType.WALK_DISTANCE, CreationSession.CreationStep.TITLE, "Walker");
+        putStepExample(TaskType.WALK_DISTANCE, CreationSession.CreationStep.DESCRIPTION, "Walk 1000 blocks");
+        putStepExample(TaskType.WALK_DISTANCE, CreationSession.CreationStep.ICON, "leather_boots");
+        putStepExample(TaskType.WALK_DISTANCE, CreationSession.CreationStep.TARGET, "ANY");
+        putStepExample(TaskType.WALK_DISTANCE, CreationSession.CreationStep.AMOUNT, "100000");
+        putStepExample(TaskType.WALK_DISTANCE, CreationSession.CreationStep.REWARDS, rewardsExample);
+        putStepExample(TaskType.PLAY_TIME, CreationSession.CreationStep.TITLE, "Dedicated Player");
+        putStepExample(TaskType.PLAY_TIME, CreationSession.CreationStep.DESCRIPTION, "Play for 1 hour");
+        putStepExample(TaskType.PLAY_TIME, CreationSession.CreationStep.ICON, "clock");
+        putStepExample(TaskType.PLAY_TIME, CreationSession.CreationStep.TARGET, "ANY");
+        putStepExample(TaskType.PLAY_TIME, CreationSession.CreationStep.AMOUNT, "3600");
+        putStepExample(TaskType.PLAY_TIME, CreationSession.CreationStep.REWARDS, rewardsExample);
         putStepExample(TaskType.BREEDING, CreationSession.CreationStep.TITLE, "Animal Breeder");
         putStepExample(TaskType.BREEDING, CreationSession.CreationStep.DESCRIPTION, "Breed 5 cows");
         putStepExample(TaskType.BREEDING, CreationSession.CreationStep.ICON, "wheat");

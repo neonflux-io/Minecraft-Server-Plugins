@@ -43,7 +43,7 @@ public class PresetManager {
 
         MinecartSettings magnet = new MinecartSettings("Magnet");
         magnet.setMagnet(true);
-        magnet.setSpeed(3);
+        magnet.setSpeed(2);
         magnet.setEffects(true);
         presets.put("magnet", magnet);
     }

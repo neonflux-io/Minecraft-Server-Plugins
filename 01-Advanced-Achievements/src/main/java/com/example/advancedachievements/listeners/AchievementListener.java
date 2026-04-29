@@ -10,9 +10,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.CraftItemEvent;
+import org.bukkit.event.inventory.FurnaceExtractEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.event.entity.EntityTameEvent;
 import org.bukkit.event.entity.EntityBreedEvent;
@@ -20,6 +24,7 @@ import org.bukkit.event.enchantment.EnchantItemEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class AchievementListener implements Listener {
     
@@ -27,6 +32,7 @@ public class AchievementListener implements Listener {
     
     public AchievementListener(AdvancedAchievements plugin) {
         this.plugin = plugin;
+        startPlayTimeTask();
     }
     
     @EventHandler
@@ -53,6 +59,15 @@ public class AchievementListener implements Listener {
             plugin.getProgressManager().addProgress(player, TaskType.MINING, blockType.name(), 1);
             plugin.getProgressManager().addProgress(player, TaskType.MINING, "ANY", 1);
         }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onBlockPlace(BlockPlaceEvent event) {
+        Player player = event.getPlayer();
+        Material blockType = event.getBlockPlaced().getType();
+
+        plugin.getProgressManager().addProgress(player, TaskType.BLOCK_PLACE, blockType.name(), 1);
+        plugin.getProgressManager().addProgress(player, TaskType.BLOCK_PLACE, "ANY", 1);
     }
       @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onEntityPickupItem(org.bukkit.event.entity.EntityPickupItemEvent event) {
@@ -84,6 +99,30 @@ public class AchievementListener implements Listener {
             }
         }
     }
+
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
+        if (event.getDamager() instanceof Player) {
+            Player player = (Player) event.getDamager();
+            int damage = (int) Math.ceil(Math.max(0.0, event.getFinalDamage()));
+            if (damage > 0) {
+                plugin.getProgressManager().addProgress(player, TaskType.DAMAGE_DEALT, event.getEntity().getType().name(), damage);
+                plugin.getProgressManager().addProgress(player, TaskType.DAMAGE_DEALT, "ANY", damage);
+            }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onEntityDamage(EntityDamageEvent event) {
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            int damage = (int) Math.ceil(Math.max(0.0, event.getFinalDamage()));
+            if (damage > 0) {
+                plugin.getProgressManager().addProgress(player, TaskType.DAMAGE_TAKEN, event.getCause().name(), damage);
+                plugin.getProgressManager().addProgress(player, TaskType.DAMAGE_TAKEN, "ANY", damage);
+            }
+        }
+    }
     
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onCraftItem(CraftItemEvent event) {
@@ -112,6 +151,16 @@ public class AchievementListener implements Listener {
             }
             plugin.getProgressManager().addProgress(player, TaskType.FISHING, "ANY", 1);
         }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onFurnaceExtract(FurnaceExtractEvent event) {
+        Player player = event.getPlayer();
+        Material smeltedType = event.getItemType();
+        int amount = Math.max(1, event.getItemAmount());
+
+        plugin.getProgressManager().addProgress(player, TaskType.ITEM_SMELT, smeltedType.name(), amount);
+        plugin.getProgressManager().addProgress(player, TaskType.ITEM_SMELT, "ANY", amount);
     }
     
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -162,6 +211,40 @@ public class AchievementListener implements Listener {
         Player player = event.getEntity();
         plugin.getProgressManager().addProgress(player, TaskType.DEATH, "ANY", 1);
         plugin.getProgressManager().addProgress(player, TaskType.DEATH, player.getName(), 1);
+
+        if (player.getKiller() != null) {
+            Player killer = player.getKiller();
+            plugin.getProgressManager().addProgress(killer, TaskType.PLAYER_KILL, "ANY", 1);
+            plugin.getProgressManager().addProgress(killer, TaskType.PLAYER_KILL, player.getName(), 1);
+        }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onPlayerMove(PlayerMoveEvent event) {
+        if (event.getTo() == null) return;
+        if (event.getFrom().getWorld() != event.getTo().getWorld()) return;
+
+        double distance = event.getFrom().distance(event.getTo());
+        if (distance <= 0) return;
+
+        int centiBlocks = (int) Math.round(distance * 100.0);
+        if (centiBlocks <= 0) return;
+
+        Player player = event.getPlayer();
+        plugin.getProgressManager().addProgress(player, TaskType.WALK_DISTANCE, "ANY", centiBlocks);
+        plugin.getProgressManager().addProgress(player, TaskType.WALK_DISTANCE, player.getWorld().getName(), centiBlocks);
+    }
+
+    private void startPlayTimeTask() {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                for (Player player : plugin.getServer().getOnlinePlayers()) {
+                    plugin.getProgressManager().addProgress(player, TaskType.PLAY_TIME, "ANY", 60);
+                    plugin.getProgressManager().addProgress(player, TaskType.PLAY_TIME, player.getWorld().getName(), 60);
+                }
+            }
+        }.runTaskTimer(plugin, 1200L, 1200L);
     }
     
     private boolean isOre(Material material) {

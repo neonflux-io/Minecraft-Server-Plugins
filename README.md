@@ -25,6 +25,7 @@ Each plugin is built with performance in mind and offers extensive configuration
 - **Rail Boost:** Enhanced minecart system with speed control, auto-pickup, storage, and advanced transportation features
 - **Super Enchantments:** Advanced enchantment system allowing enchantments beyond vanilla limits with level 1-255 support
 - **Wireless Redstone:** Wirelessly link copper bulbs, redstone lamps, and containers that sync their states across any distance
+- **Useful Autocrafter:** Protect autocrafter ingredient slots by preventing crafts that would consume a slot's last item
 
 ### **Key Features**
 
@@ -94,8 +95,11 @@ All plugins are designed to work seamlessly together and with popular server plu
     - [Core Features](#core-features-8)
     - [Player Commands](#player-commands-6)
     - [Bulb & Container Variants](#bulb--container-variants)
-11. [License](#license)
-12. [Screenshots](#screenshots)
+11. [Useful Autocrafter](#useful-autocrafter)
+  - [Core Features](#core-features-9)
+  - [Player Commands](#player-commands-7)
+12. [License](#license)
+13. [Screenshots](#screenshots)
 
 ## **Getting Started**
 
@@ -495,6 +499,27 @@ A powerful plugin that enables players to create groups of wirelessly linked blo
 
 **Aliases:** `/wr`  
 **Optional Creation Flags:** `--name=<name>` and `--category=<category>` when creating bulbs, lamps, or chests
+
+## **Useful Autocrafter**
+
+A lightweight automation plugin that protects vanilla autocrafters from depleting recipe slots. If any enabled ingredient slot is down to exactly one item, the craft is cancelled so each slot keeps a permanent one-item buffer.
+
+### Core Features:
+- **Last-Item Protection:** Prevents crafts that would consume the final item in any enabled autocrafter slot
+- **Slot-Aware Logic:** Respects disabled crafter slots and checks only enabled slots
+- **Runtime Toggle:** Enable or disable protection live without restarting the server
+- **Zero Config Setup:** Works immediately after installation without requiring a `config.yml`
+
+### Player Commands:
+
+| Command | Description |
+|---------|-------------|
+| `/usefulcrafter` | Show current enabled/disabled protection state |
+| `/usefulcrafter on` | Enable last-item slot protection |
+| `/usefulcrafter off` | Disable last-item slot protection |
+
+**Aliases:** `/uac`, `/ucraft`  
+**Note:** Built for Paper servers (Minecraft 1.21+) using the Paper crafter event API.
 
 ## **NPC Item Pickup and Drop**
 
