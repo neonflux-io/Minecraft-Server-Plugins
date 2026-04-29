@@ -1,5 +1,5 @@
 ﻿<p align="center">
-  <img src="images/img_v1.0.1-mcplugin.png" alt="Minecraft Plugin" width="128" />
+  <img src="images/plugin-logo.png" alt="Minecraft Plugin" width="128" />
 </p>
 <h1 align="center">Minecraft Server Plugins</h1>
 <p align="center">
@@ -613,11 +613,11 @@ The following screenshots demonstrate the core functionality of each plugin, inc
     <th>Plugin - Wireless Redstone</th>
   </tr>
   <tr>
-    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/img_v1.0.1-mcplugin-progress.png" target="_blank" rel="noopener noreferrer">
-      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/img_v1.0.1-mcplugin-progress.png" alt="Achievement Progress" width="450">
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/screenshot-achievement-progress.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/screenshot-achievement-progress.png" alt="Achievement Progress" width="450">
     </a></td>
-    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/img_v1.0.1-mcplugin-redstone.png" target="_blank" rel="noopener noreferrer">
-      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/img_v1.0.1-mcplugin-redstone.png" alt="Wireless Redstone" width="450">
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/screenshot-wireless-redstone.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/screenshot-wireless-redstone.png" alt="Wireless Redstone" width="450">
     </a></td>
   </tr>
   <tr>
@@ -625,11 +625,11 @@ The following screenshots demonstrate the core functionality of each plugin, inc
     <th>Plugin - Piston Crusher</th>
   </tr>
   <tr>
-    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/img_v1.0.1-mcplugin-arearewind.png" target="_blank" rel="noopener noreferrer">
-      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/img_v1.0.1-mcplugin-arearewind.png" alt="Area Rewind GUI" width="450">
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/screenshot-area-rewind.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/screenshot-area-rewind.png" alt="Area Rewind GUI" width="450">
     </a></td>
-    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/img_v1.0.1-mcplugin-crusher.png" target="_blank" rel="noopener noreferrer">
-      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/img_v1.0.1-mcplugin-crusher.png" alt="Piston Crusher" width="450">
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/screenshot-piston-crusher.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/screenshot-piston-crusher.png" alt="Piston Crusher" width="450">
     </a></td>
   </tr>
   <tr>
@@ -637,12 +637,13 @@ The following screenshots demonstrate the core functionality of each plugin, inc
     <th>Plugin - Super Enchantments</th>
   </tr>
   <tr>
-    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/img_v1.0.1-mcplugin-effect.png" target="_blank" rel="noopener noreferrer">
-      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/img_v1.0.1-mcplugin-effect.png" alt="Magnet Feature" width="450">
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/screenshot-rail-boost-effect.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/screenshot-rail-boost-effect.png" alt="Magnet Feature" width="450">
     </a></td>
-    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/img_v1.0.1-mcplugin-enchantment.png" target="_blank" rel="noopener noreferrer">
-      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/img_v1.0.1-mcplugin-enchantment.png" alt="Super Enchantment" width="450">
+    <td><a href="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/screenshot-super-enchantments.png" target="_blank" rel="noopener noreferrer">
+      <img src="https://github.com/BerndHagen/Minecraft-Server-Plugins/raw/main/images/screenshot-super-enchantments.png" alt="Super Enchantment" width="450">
     </a></td>
   </tr>
 </table>
+
 
