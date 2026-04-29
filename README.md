@@ -132,35 +132,36 @@ For plugin-specific commands and advanced configuration, see the sections below.
 
 ## **Advanced Achievements**
 
-An advanced achievement system that tracks player progress for various task types (block breaking, crafting, mob kills, etc.) and provides highly configurable rewards. All progress and claim status are stored persistently per player. The plugin architecture allows for custom extensions via API.
+Advanced Achievements is an open-source Minecraft plugin that provides a fully configurable achievement system for Spigot and Paper servers. The plugin ships with 30 predefined achievements out of the box and tracks player progress across 19 task types, including combat, building, smelting, movement, and playtime-based goals. Every achievement is independently configurable with its own title, description, GUI icon, task target, required count, reward list, hidden flag, and prerequisite chain. Progress and claim state are persisted per player in either SQLite or MySQL, and the entire system is designed to be extended by server developers through a built-in Java API.
 
 ### Core Features:
-- **Progress Tracking:** Real-time tracking for all task types (block breaking, crafting, mob kills, etc.)
-- **Reward System:** Economy (Vault), items, XP, titles, commands â€“ all configurable per achievement
-- **Database:** Supports MySQL and SQLite, including asynchronous load/save
-- **GUI:** Inventory-based GUI with pages, navigation, and progress display (BossBar/ActionBar)
-- **API:** Add custom achievements and triggers via API
-- **Messages:** All messages and prefixes are fully customizable (YAML)
-- **Prerequisites:** Achievements can depend on other achievements
-- **Sound/Firework:** Unlocks can optionally play a sound and firework
+- **30 Predefined Achievements:** Full starter progression set with combat, utility, exploration, economy, and endgame milestones
+- **19 Task Types:** Tracks block break/place, item pickup/crafting/smelting, mob and player kills, damage dealt/taken, fishing, eating, enchanting, trading, mining, breeding, taming, death, walk distance, and play time
+- **Reward System:** Supports items, XP, economy money via Vault, console commands with placeholders, and title rewards
+- **Achievement Prerequisites:** Build multi-step progression chains by requiring earlier achievements first
+- **Hidden Achievements:** Keep entries hidden until players unlock them
+- **Interactive GUI:** Paginated inventory browser with progress bars, claim states, and click-to-claim rewards
+- **Chat Creation Wizard:** Create achievements interactively in chat without editing YAML manually
+- **Database Integration:** SQLite and MySQL support with asynchronous persistence
+- **Broadcast Notifications:** Unlocks can trigger title, chat, and optional global broadcast messages
+- **Sound and Firework Effects:** Unlock feedback is configurable per server
+- **Progress Bar Display:** Optional ActionBar or BossBar progress display
+- **Developer API:** Java API for creating achievements, querying progress, unlocking rewards, and adding progress programmatically
 
 ### Administrative & Player Commands:
 
 | Command | Description |
 |---------|-------------|
-| `/achievementadmin reload` | Reloads all configuration files and achievements |
-| `/achievementadmin reset <player>` | Resets a player's progress |
-| `/achievementadmin give <player> <id>` | Manually awards an achievement |
-| `/achievementadmin create` | Starts an interactive creation dialog in chat |
-| `/achievementadmin edit <id>` | Edits an existing achievement |
-| `/achievementadmin delete <id>` | Permanently deletes an achievement |
-| `/achievementadmin list [category] [page]` | Lists achievements with filtering and pagination |
-| `/achievementadmin gui` | Opens the achievements GUI |
-| `/achievementadmin info <id>` | Shows all details for an achievement |
-| `/achievementadmin progress [id]` | Shows progress for all/specific achievements |
-| `/achievementadmin help` | Shows all available commands |
+| `/ach` | Open the paginated achievement list |
+| `/ach list <page>` | View visible achievements with pagination |
+| `/ach info <id>` | Show full details for a specific achievement |
+| `/ach progress <id>` | Show current progress for a specific achievement |
+| `/ach stats` | Show unlock count and completion percentage |
+| `/ach gui` | Open the inventory-based achievement browser |
+| `/ach create` | Start the interactive achievement creation wizard |
+| `/ach reload` | Reload `config.yml`, `achievements.yml`, and `messages.yml` |
 
-**Aliases:** `/achadmin`, `/ach` (all subcommands as above)
+**Aliases:** `/achievementadmin`, `/achadmin`, `/ach`
 
 ## **Area Rewind**
 
@@ -368,39 +369,35 @@ A comprehensive mining enhancement plugin that adds powerful tools and features 
 
 ## **Rail Boost**
 
-A comprehensive minecart enhancement plugin that transforms vanilla minecart transportation into a powerful and customizable system. Each minecart can be individually configured with speed levels, automated item collection, built-in storage, and advanced physics improvements for reliable rail-based transportation networks.
+Rail Boost is an open-source Minecraft plugin that transforms vanilla minecart transportation into a fully configurable, preset-driven system. Each minecart can be configured with six speed levels, automated item collection, optional particle and magnet effects, chunk loading behavior, and shared preset storage managed through named preset sticks. The plugin also adds rail safety checks and speed handling so minecarts travel more reliably across complex track networks.
 
 ### Core Features:
-- **Speed Control:** 6 configurable speed levels (0.25x to 4.0x) with intelligent physics handling for curves and uphill sections
-- **Auto-Pickup System:** Automatic item collection within configurable radius (1-5 blocks) with customizable blacklist filtering
-- **Storage Integration:** Each minecart has its own 27-slot inventory accessible via GUI, with automatic item sorting
-- **Advanced Physics:** Enhanced curve navigation, uphill momentum preservation, and anti-stuck mechanisms for smooth travel
-- **Magnetism System:** Optional minecart-to-minecart attraction for train formation with intelligent collision prevention
-- **Visual Effects:** Customizable particle trails with intensity scaling based on speed and multiple particle types
-- **Performance Tools:** Real-time speedometer with BossBar display showing current velocity in km/h
-- **Automation Features:** Auto-sit functionality for seamless boarding and chunkloading for uninterrupted long-distance travel
-- **Persistent Configuration:** All settings are saved per-minecart and persist through server restarts
+- **Speed Control:** Six configurable speed levels with enhanced curve handling, uphill momentum preservation, and smooth speed transitions
+- **Auto-Pickup System:** Automatic item collection within a configurable radius with per-cart blacklist filtering
+- **Preset-Linked Shared Storage:** Preset carts can use shared 54-slot storage inventories
+- **Preset System:** Create, save, share, and apply named minecart configurations using preset sticks
+- **Predefined Presets:** Ships with three standard presets for speed, collector, and magnet use cases
+- **Advanced Physics:** Multi-block track checks, anti-stuck handling, and safer high-speed rail travel
+- **Magnetism System:** Optional minecart attraction for train convoy behavior with collision prevention
+- **Visual Effects:** Configurable particle trails with speed-based intensity
+- **Real-Time Speedometer:** BossBar speed display in km/h with color-coded feedback
+- **Chunk Loading:** Temporary chunk force-loading for uninterrupted long-distance travel
+- **F-Key Access:** Open storage and hopper minecart inventories while seated
+- **Persistent Configuration:** Preset and cart settings persist across restarts
 
 ### Player Commands:
 | Command | Description |
 |---------|-------------|
-| `/railboost speed <1-6>` | Sets speed level (0.25x to 4.0x multiplier) |
-| `/railboost autopickup <true/false>` | Toggles automatic item collection |
-| `/railboost autopickup radius <1-5>` | Sets pickup radius in blocks |
-| `/railboost storage` | Opens minecart's dedicated inventory |
-| `/railboost speedometer <true/false>` | Shows/hides real-time speed display |
-| `/railboost chunkload <true/false>` | Enables chunk loading while traveling |
-| `/railboost magnet <true/false>` | Toggles minecart magnetism for train formation |
-| `/railboost effect <true/false>` | Enables particle trail effects |
-| `/railboost effect type <particle>` | Sets particle type (FLAME, HEART, CLOUD, etc.) |
-| `/railboost autosit <true/false>` | Automatic boarding when approaching minecart |
-| `/railboost blacklist add/remove <item>` | Manages auto-pickup item filter |
-| `/railboost blacklist list` | Shows current blacklisted items |
-| `/railboost info` | Displays all current minecart settings |
+| `/railboost help` | Show command help |
+| `/railboost preset <name>` | Give yourself a preset stick |
+| `/railboost give <player> <preset>` | Give another player a preset stick |
+| `/railboost create <name>` | Create a new preset |
+| `/railboost edit <preset> <setting> <value>` | Edit one preset setting |
+| `/railboost edit <preset> storage` | Open shared storage for a preset |
+| `/railboost list` | List all available presets |
+| `/railboost delete <preset>` | Delete a preset |
 
-**Note:** Most commands require sitting in an activated minecart. Use `/railboost info` to verify activation status.
-
-**Aliases:** `/rb` â€“ **Activation:** Automatic when using any command while in a minecart
+**Aliases:** `/rb`, `/boost`
 
 ## **Super Enchantments**
 
