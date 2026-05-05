@@ -1,0 +1,25 @@
+name: BloodMoon-Event
+version: 1.0.0
+main: com.cobbleworks.bloodmoon.BloodMoonPlugin
+api-version: '1.20'
+author: Cobbleworks
+depend:
+  - Citizens
+  - Sentinel
+commands:
+  bloodmoon:
+    description: Manage the Blood Moon event.
+    usage: "/bloodmoon <healthbar|start|stop|status|spawn|clear|reload|chance|difficulty> (spawn: vampire|clown|zombie|witch|scarecrow|ghost|werewolf)"
+    aliases:
+      - bm
+permissions:
+  bloodmoon.admin:
+    description: Allows full Blood Moon administration.
+    default: op
+  bloodmoon.healthbar:
+    description: Allows players to use the overhead special NPC healthbar system.
+    default: true
+  bloodmoon.notify:
+    description: Allows receiving Blood Moon notifications.
+    default: true
+
