@@ -26,6 +26,7 @@ Each plugin is built with performance in mind and offers extensive configuration
 - **Super Enchantments:** Advanced enchantment system allowing enchantments beyond vanilla limits with level 1-255 support
 - **Wireless Redstone:** Wirelessly link copper bulbs, redstone lamps, and containers that sync their states across any distance
 - **Useful Autocrafter:** Protect autocrafter ingredient slots by preventing crafts that would consume a slot's last item
+- **BloodMoon Event:** Nightly boss event that spawns seven distinct NPCs — Vampire, Clown, Zombie, Witch, Scarecrow, Ghost, and Werewolf — near active players with custom abilities, difficulty scaling, and configurable spawn rules
 
 ### **Key Features**
 
@@ -102,8 +103,12 @@ All plugins are designed to work seamlessly together and with popular server plu
     - [Core Features](#core-features-10)
     - [Administrative Commands](#administrative-commands-2)
     - [Usage Examples](#usage-examples-1)
-13. [License](#license)
-14. [Screenshots](#screenshots)
+13. [BloodMoon Event](#bloodmoon-event)
+    - [Core Features](#core-features-11)
+    - [Administrative Commands](#administrative-commands-3)
+    - [Usage Examples](#usage-examples-2)
+14. [License](#license)
+15. [Screenshots](#screenshots)
 
 ## **Getting Started**
 
@@ -595,6 +600,67 @@ pickup:
 **Permissions:** `npcpickup.admin` (default: OP) for all administrative commands  
 
 **Note:** All NPC inventories are stored in memory and reset on server restart. NPCs will only move towards items if they have pathfinding capabilities enabled in Citizens2 configuration.
+
+## **BloodMoon Event**
+
+BloodMoon Event is an open-source Minecraft plugin that transforms server nights into high-intensity boss encounters. When the Blood Moon rises, seven unique boss NPCs — Vampire, Clown, Zombie, Witch, Scarecrow, Ghost, and Werewolf — spawn near active players and engage them with custom abilities, particle effects, and multi-phase combat. Each boss has a distinct attack pattern, a dedicated ability set, and configurable per-boss spawn caps. The event is triggered by a configurable nightly chance roll and can also be forced via admin commands at any time. Requires Citizens 2 and Sentinel as hard dependencies.
+
+### Core Features:
+- **Seven Distinct Bosses:** Vampire, Clown, Zombie, Witch, Scarecrow, Ghost, and Werewolf — each with unique combat mechanics, ability timers, and targeting behavior
+- **Custom Ability System:** Each boss uses a dedicated BukkitRunnable controller with ability cooldowns, particle effects, potion applications, and entity summons
+- **Overhead Health Bars:** ArmorStand-based floating health displays above each active boss NPC, toggled per player
+- **Per-Player Spawn Caps:** Configurable maximum count of each NPC type allowed per player simultaneously
+- **Four Difficulty Profiles:** Easy, Medium, Hard, and Nightmare profiles scale boss health, damage, and ability trigger rates
+- **Configurable Event Chance:** Set a nightly percentage chance for Blood Moon to activate automatically across configured worlds
+- **Multi-World Support:** Run Blood Moon independently in any subset of server worlds
+- **Live Admin Control:** Start, stop, spawn individual NPCs, clear all active NPCs, reload config, and switch difficulty without restarting the server
+- **Citizens + Sentinel Integration:** All bosses are Citizens NPCs with Sentinel providing targeting rules, aggro range, and combat AI
+
+### Administrative Commands:
+
+| Command | Description |
+|---------|-------------|
+| `/bloodmoon start [world]` | Force-start Blood Moon in the target world |
+| `/bloodmoon stop [world]` | Stop Blood Moon and clean up all active NPCs |
+| `/bloodmoon status` | Print manager state, active world count, and NPC counts |
+| `/bloodmoon spawn <type> <player>` | Spawn one boss NPC near the target player |
+| `/bloodmoon clear [world]` | Force-clear all active BloodMoon NPCs in the target world |
+| `/bloodmoon reload` | Reload `config.yml` without restarting the server |
+| `/bloodmoon chance <1-100>` | Override Blood Moon chance for the current session |
+| `/bloodmoon difficulty <easy\|medium\|hard\|nightmare>` | Switch difficulty profile live |
+| `/bloodmoon healthbar` | Show health-bar system status and active bar count |
+
+### Usage Examples:
+
+#### Config Setup:
+```yaml
+# In config.yml: configure worlds and base settings
+bloodmoon:
+  worlds:
+    - world
+  chance: 25
+  difficulty: medium
+```
+
+#### Spawning Bosses Manually:
+```
+/bloodmoon spawn vampire Steve
+/bloodmoon spawn clown Alex
+/bloodmoon status
+```
+
+#### Live Event Management:
+```
+/bloodmoon start world
+/bloodmoon difficulty nightmare
+/bloodmoon clear world
+/bloodmoon stop world
+```
+
+**Spawn type values:** `vampire`, `clown`, `zombie`, `witch`, `scarecrow`, `ghost`, `werewolf`  
+**Alias:** `/bm`  
+**Requirements:** Citizens 2 and Sentinel plugins (both are hard dependencies), Minecraft 1.20+, Java 17+  
+**Permissions:** `bloodmoon.admin` (default: OP) for all administrative commands; `bloodmoon.healthbar` and `bloodmoon.notify` (default: true) for players
 
 ## **License**
 
